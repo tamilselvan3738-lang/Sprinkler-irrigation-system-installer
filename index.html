@@ -1,0 +1,2645 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPRINKLER & IRRIGATION SYSTEM INSTALLER | Smart Precision Irrigation</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            hydro: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#042238',
+            },
+            verdant: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Framer Motion / Motion Library -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.js"></script>
+
+  <style>
+    :root {
+      --bg-surface: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --nav-glass: rgba(255, 255, 255, 0.92);
+      --border-soft: rgba(14, 165, 233, 0.16);
+      --text-heading: #091e36;
+      --text-body: #475569;
+    }
+
+    .dark {
+      --bg-surface: #040914;
+      --card-bg: rgba(9, 18, 36, 0.94);
+      --nav-glass: rgba(6, 12, 25, 0.94);
+      --border-soft: rgba(56, 189, 248, 0.18);
+      --text-heading: #f8fafc;
+      --text-body: #94a3b8;
+    }
+
+    html {
+      overflow-x: clip;
+    }
+
+    body {
+      background-color: var(--bg-surface);
+      color: var(--text-heading);
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: clip;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ========================================================================= */
+    /* 3D TACTILE PUSH BUTTON WITH MECHANICAL DEPTH                             */
+    /* ========================================================================= */
+    .btn-3d-scene {
+      perspective: 1200px;
+      display: inline-block;
+    }
+
+    .btn-3d {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.46rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #ffffff;
+      border-radius: 9999px;
+      cursor: pointer;
+      user-select: none;
+      transform-style: preserve-3d;
+      white-space: nowrap;
+      transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.14s ease, filter 0.2s ease;
+      
+      /* Vibrant Cyan to Royal Hydro Gradient */
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+      
+      /* Multi-tier 3D extrusion shadows */
+      box-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.5) inset,
+        0 -2px 0 rgba(0, 0, 0, 0.25) inset,
+        0 4px 0 #075985,
+        0 5px 0 #0c4a6e,
+        0 8px 14px -2px rgba(2, 132, 199, 0.4),
+        0 12px 20px -6px rgba(14, 165, 233, 0.25);
+    }
+
+    .dark .btn-3d {
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 50%, #0369a1 100%);
+      box-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.65) inset,
+        0 -2px 0 rgba(0, 0, 0, 0.3) inset,
+        0 4px 0 #034870,
+        0 5px 0 #022f4b,
+        0 8px 16px rgba(56, 189, 248, 0.45),
+        0 14px 22px -6px rgba(2, 132, 199, 0.4);
+    }
+
+    .btn-3d:hover {
+      transform: translateY(-1.5px);
+      box-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.6) inset,
+        0 -2px 0 rgba(0, 0, 0, 0.25) inset,
+        0 5.5px 0 #075985,
+        0 6.5px 0 #0c4a6e,
+        0 10px 16px rgba(2, 132, 199, 0.5),
+        0 15px 24px -6px rgba(14, 165, 233, 0.35);
+      filter: brightness(1.05);
+    }
+
+    .dark .btn-3d:hover {
+      box-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.75) inset,
+        0 -2px 0 rgba(0, 0, 0, 0.3) inset,
+        0 5.5px 0 #034870,
+        0 6.5px 0 #022f4b,
+        0 10px 18px rgba(56, 189, 248, 0.55),
+        0 16px 26px -5px rgba(2, 132, 199, 0.5);
+    }
+
+    /* Mechanical 3D Compression on Click */
+    .btn-3d:active, .btn-3d.btn-pressed {
+      transform: translateY(3px) scale(0.985) !important;
+      box-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.3) inset,
+        0 1.5px 0 #075985,
+        0 2px 0 #0c4a6e,
+        0 3px 6px rgba(2, 132, 199, 0.3) !important;
+      filter: brightness(0.96);
+    }
+
+    .dark .btn-3d:active, .dark .btn-3d.btn-pressed {
+      box-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.4) inset,
+        0 1.5px 0 #034870,
+        0 2px 0 #022f4b,
+        0 3px 8px rgba(56, 189, 248, 0.35) !important;
+    }
+
+
+
+    /* ========================================================================= */
+    /* NAVBAR GLASSMORPHISM & BLUR                                               */
+    /* ========================================================================= */
+    .nav-glassmorphism {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--nav-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-soft);
+      box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s ease;
+    }
+
+    .dark .nav-glassmorphism {
+      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5), 0 0 15px -4px rgba(14, 165, 233, 0.12);
+    }
+
+    /* ========================================================================= */
+    /* ROTATING SPRINKLER HEAD ANIMATION                                         */
+    /* ========================================================================= */
+    @keyframes sprinklerSweep {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(24deg);
+      }
+      50% {
+        transform: rotate(-18deg);
+      }
+      75% {
+        transform: rotate(10deg);
+      }
+    }
+
+    .group:hover .logo-sprinkler-head {
+      animation: sprinklerSweep 2s ease-in-out infinite;
+      transform-origin: 50% 60%;
+    }
+
+    /* ========================================================================= */
+    /* WATER DROPLET PARTICLE BURST                                              */
+    /* ========================================================================= */
+    .water-particle {
+      position: fixed;
+      pointer-events: none;
+      width: 7px;
+      height: 7px;
+      background: radial-gradient(circle, #38bdf8 10%, #0284c7 90%);
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38bdf8;
+      animation: dropletBurst 0.65s cubic-bezier(0.12, 0.8, 0.33, 1) forwards;
+      z-index: 9999;
+    }
+
+    @keyframes dropletBurst {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--dx), var(--dy)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* ========================================================================= */
+    /* HAMBURGER ICON SMOOTH MORPH ANIMATION (PERFECT CENTERED 'X')              */
+    /* ========================================================================= */
+    .ham-bar {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 9999px;
+      background-color: currentColor;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    }
+
+    /* When hamburger is active -> transform perfectly to 'X' */
+    #hamburgerBtn.active #hamBarTop {
+      transform: translateY(6px) rotate(45deg);
+    }
+    #hamburgerBtn.active #hamBarMid {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    #hamburgerBtn.active #hamBarBot {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* ========================================================================= */
+    /* HOME DROPDOWN HOVER & SEAMLESS BRIDGE                                     */
+    /* ========================================================================= */
+    .home-dropdown-container {
+      position: relative;
+    }
+
+    .home-dropdown-menu {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px) scale(0.96);
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                  visibility 0.2s;
+    }
+
+    /* Hover trigger with seamless invisible bridge so cursor never drops hover */
+    .home-dropdown-container:hover .home-dropdown-menu,
+    .home-dropdown-container.is-open .home-dropdown-menu {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Invisible bridge over the gap between button and menu */
+    .home-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      right: 0;
+      height: 16px;
+      background: transparent;
+    }
+
+    /* ========================================================================= */
+    /* RTL ADJUSTMENTS & DRAWER LOGICAL POSITIONING                              */
+    /* ========================================================================= */
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    [dir="rtl"] .rtl-flip {
+      transform: scaleX(-1);
+    }
+
+    /* Drawer Positioning for LTR vs RTL */
+    [dir="ltr"] #mobileDrawer {
+      right: 0;
+      left: auto;
+    }
+    [dir="ltr"] #mobileDrawer.drawer-closed {
+      transform: translateX(100%);
+    }
+
+    [dir="rtl"] #mobileDrawer {
+      left: 0;
+      right: auto;
+    }
+    [dir="rtl"] #mobileDrawer.drawer-closed {
+      transform: translateX(-100%);
+    }
+
+    #mobileDrawer {
+      transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Navigation links hover glow */
+    .nav-link {
+      position: relative;
+      transition: color 0.18s ease;
+      white-space: nowrap;
+      background: transparent !important;
+    }
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 0.55rem;
+      background: rgba(14, 165, 233, 0.08);
+      opacity: 0;
+      transform: scale(0.92);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: -1;
+    }
+    .dark .nav-link::before {
+      background: rgba(56, 189, 248, 0.12);
+    }
+    
+    /* Active navigation indicator styling */
+    .nav-link.nav-active {
+      color: #0284c7 !important;
+      font-weight: 700 !important;
+    }
+    .dark .nav-link.nav-active {
+      color: #38bdf8 !important;
+    }
+    .nav-link.nav-active::before {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+      background: rgba(14, 165, 233, 0.12) !important;
+      border: 1px solid rgba(14, 165, 233, 0.35) !important;
+    }
+    .dark .nav-link.nav-active::before {
+      background: rgba(56, 189, 248, 0.16) !important;
+      border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    }
+    .nav-link.nav-active::after {
+      content: '';
+      position: absolute;
+      bottom: -2.5px;
+      left: 12px;
+      right: 12px;
+      height: 2.5px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #0ea5e9, #10b981);
+      box-shadow: 0 0 8px rgba(14, 165, 233, 0.6);
+    }
+    .drawer-nav-active {
+      background: rgba(14, 165, 233, 0.12) !important;
+      color: #0284c7 !important;
+      font-weight: 700 !important;
+      border-left: 4px solid #0ea5e9 !important;
+    }
+    .dark .drawer-nav-active {
+      background: rgba(56, 189, 248, 0.16) !important;
+      color: #38bdf8 !important;
+      border-left: 4px solid #38bdf8 !important;
+    }
+
+    .nav-link:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Subtle background grid */
+    .bg-grid-irrigation {
+      background-image: radial-gradient(rgba(14, 165, 233, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .dark .bg-grid-irrigation {
+      background-image: radial-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+    }
+  </style>
+  <!-- Universal Responsive Mobile-First Stylesheet -->
+  <link rel="stylesheet" href="responsive.css" />
+</head>
+<body class="bg-slate-50 dark:bg-[#040914] min-h-screen text-slate-800 dark:text-slate-100 flex flex-col transition-colors duration-300">
+
+  <!-- ========================================================================= -->
+  <!-- MAIN NAVBAR                                                               -->
+  <!-- LAPTOP VIEW: LOGO (LEFT) | CENTER MENU | OTHER CONTROLS (RIGHT)           -->
+  <!-- MOBILE/TAB:  LOGO (LEFT) | HAMBURGER ICON (RIGHT)                         -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-50 w-full nav-glassmorphism">
+    <div class="max-w-[1536px] mx-auto px-3 sm:px-5 lg:px-6">
+      <div class="flex items-center justify-between h-16 sm:h-17">
+
+        <!-- ===================================================================== -->
+        <!-- 1. LOGO: REDUCED SIZE & COMPACT (PLACED STRICTLY AT THE LEFT)         -->
+        <!-- ===================================================================== -->
+        <div class="flex-shrink-0 flex items-center">
+          <a href="index.html" class="group flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-hydro-500 rounded-lg p-0.5 transition-transform hover:scale-[1.02]">
+            
+            <!-- Compact Vector Emblem (32px x 32px) -->
+            <div class="relative w-8 h-8 rounded-lg bg-gradient-to-br from-hydro-400 via-teal-400 to-emerald-500 p-0.5 shadow-sm shadow-hydro-500/20 group-hover:shadow-cyan-500/35 transition-all">
+              <div class="w-full h-full bg-slate-950 dark:bg-[#070e1b] rounded-[7px] flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-hydro-500/30 to-emerald-500/20 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                
+                <!-- Rotary Sprinkler + Hydro Droplet + Growth Sprout SVG -->
+                <svg viewBox="0 0 100 100" class="w-5.5 h-5.5 relative z-10 logo-sprinkler-head" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="42" stroke="url(#navLogoArcGrad)" stroke-width="2.5" stroke-dasharray="3 4" class="opacity-40" />
+                  <path d="M50 14 C32 14 18 28 16 48" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3" />
+                  <path d="M50 14 C68 14 82 28 84 48" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3" />
+                  <rect x="44" y="72" width="12" height="15" rx="3" fill="url(#navLogoMetalBase)" />
+                  <path d="M40 85 L60 85" stroke="#0284c7" stroke-width="3" stroke-linecap="round" />
+                  <path d="M50 24 C50 24 33 43 33 55 C33 64.3888 40.6112 72 50 72 C59.3888 72 67 64.3888 67 55 C67 43 50 24 50 24Z" fill="url(#navLogoDropGrad)" />
+                  <path d="M50 64 C50 64 57 58 57 50 C57 44 51 40 50 38 C49 40 43 44 43 50 C43 58 50 64 50 64Z" fill="url(#navLogoSproutGrad)" />
+                  <path d="M50 40 L50 60" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.85" />
+                  <ellipse cx="43" cy="48" rx="3.5" ry="6" transform="rotate(-25 43 48)" fill="#ffffff" opacity="0.65" />
+                  
+                  <defs>
+                    <linearGradient id="navLogoArcGrad" x1="0" y1="0" x2="100" y2="100">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="50%" stop-color="#22c55e" />
+                      <stop offset="100%" stop-color="#0284c7" />
+                    </linearGradient>
+                    <linearGradient id="navLogoMetalBase" x1="44" y1="72" x2="56" y2="87">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="100%" stop-color="#0369a1" />
+                    </linearGradient>
+                    <linearGradient id="navLogoDropGrad" x1="33" y1="24" x2="67" y2="72">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="45%" stop-color="#0284c7" />
+                      <stop offset="100%" stop-color="#075985" />
+                    </linearGradient>
+                    <linearGradient id="navLogoSproutGrad" x1="43" y1="38" x2="57" y2="64">
+                      <stop offset="0%" stop-color="#4ade80" />
+                      <stop offset="100%" stop-color="#15803d" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Compact Brand Typography -->
+            <div class="flex flex-col">
+              <span class="font-display font-black text-base sm:text-lg tracking-tight bg-gradient-to-r from-hydro-600 via-teal-600 to-emerald-600 dark:from-hydro-400 dark:via-teal-300 dark:to-emerald-400 bg-clip-text text-transparent leading-none">
+                AQUA<span class="text-emerald-600 dark:text-emerald-400">FLOW</span>
+              </span>
+              <span class="font-sans font-bold text-[7.5px] sm:text-[8px] tracking-wider text-slate-500 dark:text-slate-400 uppercase mt-0.5">
+                IRRIGATION SYSTEMS
+              </span>
+            </div>
+          </a>
+        </div>
+
+                <!-- ===================================================================== -->
+        <!-- 2. NAVBAR MENU: CENTERED IN LAPTOP VIEW                               -->
+        <!-- SEQUENCE: Home (shows Home 1 & 2 on hover) | About | Services |       -->
+        <!--           Guide | Projects | Why Choose Us | Irrigation | Contact     -->
+        <!-- ===================================================================== -->
+        <nav class="hidden xl:flex items-center justify-center gap-1 xl:gap-2.5 mx-2" aria-label="Main Navigation">
+
+          <!-- 1. Home (Shows Home 1 & Home 2 smoothly ON HOVER; clicks redirect to index.html) -->
+          <div class="home-dropdown-container group" id="desktopHomeDropdown">
+            <a 
+              href="index.html"
+              id="homeMenuBtn"
+              class="nav-link nav-active flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-700 dark:text-slate-200 hover:text-hydro-600 dark:hover:text-hydro-400 focus:outline-none"
+              aria-haspopup="true"
+              aria-expanded="false">
+              <i data-lucide="home" class="w-3.5 h-3.5 text-hydro-500"></i>
+              <span>Home</span>
+              <i data-lucide="chevron-down" class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180"></i>
+            </a>
+
+            <!-- Dropdown Menu: Revealed on Hover with Home 1 and Home 2 -->
+            <div class="home-dropdown-menu absolute top-full left-0 mt-1.5 w-68 rounded-2xl bg-white/98 dark:bg-[#091326]/98 backdrop-blur-xl border border-hydro-200/80 dark:border-hydro-800/80 shadow-2xl shadow-hydro-500/15 p-2 z-50">
+              <div class="px-3 py-1.5 border-b border-slate-100 dark:border-slate-800/80 mb-1">
+                <p class="text-[9.5px] uppercase font-bold tracking-wider text-hydro-600 dark:text-hydro-400">Select Architecture</p>
+              </div>
+
+              <!-- Home 1 Item -->
+              <a href="index.html" id="dropdownHome1" class="group/item flex items-start gap-2.5 p-2 rounded-xl bg-hydro-100/90 dark:bg-hydro-900/80 ring-1 ring-hydro-400 transition-colors">
+                <div class="w-7 h-7 rounded-lg bg-hydro-100 dark:bg-hydro-900/60 text-hydro-600 dark:text-hydro-300 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                  <i data-lucide="droplets" class="w-3.5 h-3.5"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-display font-bold text-xs text-slate-800 dark:text-white group-hover/item:text-hydro-600 dark:group-hover/item:text-hydro-400">Home 1</span>
+                    <span class="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400">Residential</span>
+                  </div>
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-tight">Smart turf sprays &amp; Wi-Fi controllers</p>
+                </div>
+              </a>
+
+              <!-- Home 2 Item -->
+              <a href="home-2.html" id="dropdownHome2" class="group/item flex items-start gap-2.5 p-2 rounded-xl hover:bg-hydro-50 dark:hover:bg-hydro-900/40 transition-colors mt-0.5">
+                <div class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300 flex items-center justify-center flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                  <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-display font-bold text-xs text-slate-800 dark:text-white group-hover/item:text-emerald-600 dark:group-hover/item:text-emerald-400">Home 2</span>
+                    <span class="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-hydro-100 dark:bg-hydro-950/60 text-hydro-700 dark:text-hydro-400">Commercial</span>
+                  </div>
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-tight">High-flow pumps &amp; agro-irrigation</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- 2. About -->
+          <a href="about.html" id="navAbout" class="nav-link px-2.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-700 dark:text-slate-200 hover:text-hydro-600 dark:hover:text-hydro-400">
+            About
+          </a>
+
+          <!-- 3. Services -->
+          <a href="services.html" id="navServices" class="nav-link px-2.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-700 dark:text-slate-200 hover:text-hydro-600 dark:hover:text-hydro-400">
+            Services
+          </a>
+
+          <!-- 4. Guide -->
+          <a href="guide.html" id="navGuide" class="nav-link px-2.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-700 dark:text-slate-200 hover:text-hydro-600 dark:hover:text-hydro-400">
+            Guide
+          </a>
+
+          <!-- 5. Projects -->
+          <a href="projects.html" id="navProjects" class="nav-link px-2.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-700 dark:text-slate-200 hover:text-hydro-600 dark:hover:text-hydro-400">
+            Projects
+          </a>
+
+          <!-- 6. Why Choose Us -->
+          <a href="why-choose-us.html" id="navWhyChooseUs" class="nav-link px-2.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-700 dark:text-slate-200 hover:text-hydro-600 dark:hover:text-hydro-400">
+            Why Choose Us
+          </a>
+
+          <!-- 7. Irrigation -->
+          <a href="irrigation.html" id="navIrrigation" class="nav-link text-emerald-700 dark:text-emerald-400 hover:text-emerald-600 flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[13px] font-semibold">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Irrigation</span>
+          </a>
+
+          <!-- 8. Contact -->
+          <a href="contact.html" id="navContact" class="nav-link px-2.5 py-1.5 rounded-lg text-[13px] font-semibold text-slate-700 dark:text-slate-200 hover:text-hydro-600 dark:hover:text-hydro-400">
+            Contact
+          </a>
+        </nav>
+
+        <!-- ===================================================================== -->
+        <!-- 3. REMAINING CONTROLS (RIGHT IN LAPTOP VIEW)                           -->
+        <!--    - Dark Mode Toggle (Icon Only)                                     -->
+        <!--    - Right to Left Toggle (RTL: ICON ONLY, NO TEXT)                  -->
+        <!--    - 3D Book Now Button                                               -->
+        <!-- ===================================================================== -->
+        <div class="hidden xl:flex items-center flex-shrink-0 gap-2.5 ml-4">
+
+          <!-- Dark Mode Toggle (Icon Only) -->
+          <button 
+            id="darkModeToggle" 
+            onclick="toggleDarkMode()" 
+            class="relative w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700/80 flex items-center justify-center text-slate-700 dark:text-yellow-400 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-hydro-500 group"
+            title="Toggle Light / Dark Mode"
+            aria-label="Toggle Theme">
+            <i data-lucide="sun" class="w-4 h-4 hidden dark:block transition-transform duration-500 group-hover:rotate-90 text-amber-400"></i>
+            <i data-lucide="moon" class="w-4 h-4 block dark:hidden transition-transform duration-500 group-hover:-rotate-12 text-slate-700"></i>
+          </button>
+
+          <!-- Right to Left (RTL) Toggle (ICON ONLY AS REQUESTED - NO TEXT) -->
+          <button 
+            id="rtlToggle" 
+            onclick="toggleDirection()" 
+            class="relative w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700/80 flex items-center justify-center text-slate-700 dark:text-slate-200 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-hydro-500 group"
+            title="Toggle Direction (LTR / RTL)"
+            aria-label="Toggle Direction">
+            <i data-lucide="arrow-left-right" class="w-4 h-4 text-hydro-500 group-hover:scale-110 transition-transform"></i>
+          </button>
+
+          <!-- 3D "Book Now" Button -->
+          <div class="btn-3d-scene" id="desktopBookBtnScene">
+            <a 
+              href="contact.html" 
+              id="desktopBookBtn"
+              class="btn-3d group"
+              aria-label="Book Sprinkler and Irrigation Installation">
+              <i data-lucide="calendar-check-2" class="w-3.5 h-3.5 text-hydro-100 group-hover:scale-110 transition-transform"></i>
+              <span>Book Now</span>
+              <i data-lucide="arrow-right" class="w-3 h-3 text-hydro-200 group-hover:translate-x-0.5 rtl-flip transition-transform"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- 4. MOBILE & TABLET HAMBURGER BUTTON (AT RIGHT)                        -->
+        <!-- ===================================================================== -->
+        <div class="flex items-center xl:hidden">
+          <button 
+            id="hamburgerBtn" 
+            onclick="toggleMobileMenu()" 
+            class="relative w-10 h-10 rounded-xl flex items-center justify-center bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-hydro-500 shadow-sm transition-colors"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false">
+            <div class="w-5 h-3.5 flex flex-col justify-between items-center relative pointer-events-none">
+              <span id="hamBarTop" class="ham-bar origin-center"></span>
+              <span id="hamBarMid" class="ham-bar"></span>
+              <span id="hamBarBot" class="ham-bar origin-center"></span>
+            </div>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MOBILE & TABLET HAMBURGER DRAWER (LOGO MATCHES NAVBAR EXACTLY)            -->
+  <!-- ========================================================================= -->
+  <div 
+    id="mobileDrawerBackdrop" 
+    onclick="closeMobileMenu()" 
+    class="fixed inset-0 bg-slate-950/65 backdrop-blur-sm z-50 invisible opacity-0 transition-all duration-300 xl:hidden">
+  </div>
+
+  <div 
+    id="mobileDrawer" 
+    class="drawer-closed fixed top-0 bottom-0 w-[86%] sm:w-[380px] bg-white dark:bg-[#070e1b] z-50 shadow-2xl flex flex-col border-x dark:border-slate-800/80 overflow-y-auto xl:hidden">
+    
+    <!-- Drawer Header: EXACT SAME LOGO AS NAVBAR -->
+    <div class="p-4 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+      <a href="index.html" onclick="closeMobileMenu()" class="flex items-center gap-2 focus:outline-none">
+        
+        <!-- Exact Same 32px Vector Emblem -->
+        <div class="relative w-8 h-8 rounded-lg bg-gradient-to-br from-hydro-400 via-teal-400 to-emerald-500 p-0.5 shadow-sm shadow-hydro-500/20">
+          <div class="w-full h-full bg-slate-950 dark:bg-[#070e1b] rounded-[7px] flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-tr from-hydro-500/30 to-emerald-500/20 opacity-80"></div>
+            
+            <svg viewBox="0 0 100 100" class="w-5.5 h-5.5 relative z-10 logo-sprinkler-head" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="42" stroke="url(#drawerLogoArcGrad)" stroke-width="2.5" stroke-dasharray="3 4" class="opacity-40" />
+              <path d="M50 14 C32 14 18 28 16 48" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3" />
+              <path d="M50 14 C68 14 82 28 84 48" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3" />
+              <rect x="44" y="72" width="12" height="15" rx="3" fill="url(#drawerLogoMetalBase)" />
+              <path d="M40 85 L60 85" stroke="#0284c7" stroke-width="3" stroke-linecap="round" />
+              <path d="M50 24 C50 24 33 43 33 55 C33 64.3888 40.6112 72 50 72 C59.3888 72 67 64.3888 67 55 C67 43 50 24 50 24Z" fill="url(#drawerLogoDropGrad)" />
+              <path d="M50 64 C50 64 57 58 57 50 C57 44 51 40 50 38 C49 40 43 44 43 50 C43 58 50 64 50 64Z" fill="url(#drawerLogoSproutGrad)" />
+              <path d="M50 40 L50 60" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.85" />
+              <ellipse cx="43" cy="48" rx="3.5" ry="6" transform="rotate(-25 43 48)" fill="#ffffff" opacity="0.65" />
+              
+              <defs>
+                <linearGradient id="drawerLogoArcGrad" x1="0" y1="0" x2="100" y2="100">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="50%" stop-color="#22c55e" />
+                  <stop offset="100%" stop-color="#0284c7" />
+                </linearGradient>
+                <linearGradient id="drawerLogoMetalBase" x1="44" y1="72" x2="56" y2="87">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#0369a1" />
+                </linearGradient>
+                <linearGradient id="drawerLogoDropGrad" x1="33" y1="24" x2="67" y2="72">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="45%" stop-color="#0284c7" />
+                  <stop offset="100%" stop-color="#075985" />
+                </linearGradient>
+                <linearGradient id="drawerLogoSproutGrad" x1="43" y1="38" x2="57" y2="64">
+                  <stop offset="0%" stop-color="#4ade80" />
+                  <stop offset="100%" stop-color="#15803d" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Exact Same Typography -->
+        <div class="flex flex-col">
+          <span class="font-display font-black text-base tracking-tight bg-gradient-to-r from-hydro-600 via-teal-600 to-emerald-600 dark:from-hydro-400 dark:via-teal-300 dark:to-emerald-400 bg-clip-text text-transparent leading-none">
+            AQUA<span class="text-emerald-600 dark:text-emerald-400">FLOW</span>
+          </span>
+          <span class="font-sans font-bold text-[7.5px] tracking-wider text-slate-500 dark:text-slate-400 uppercase mt-0.5">
+            IRRIGATION SYSTEMS
+          </span>
+        </div>
+      </a>
+
+      <button 
+        onclick="closeMobileMenu()" 
+        class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        aria-label="Close menu">
+        <i data-lucide="x" class="w-4.5 h-4.5"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation Content (All items present inside hamburger menu) -->
+    <div class="p-4 space-y-3 flex-1">
+
+            <!-- 1. Home Accordion (Home 1 & Home 2) -->
+      <div class="border-b border-slate-100 dark:border-slate-800/80 pb-2.5 drawer-stagger-item">
+        <button 
+          onclick="toggleMobileHomeSubmenu()" 
+          class="w-full flex items-center justify-between text-sm font-bold text-slate-800 dark:text-slate-100 py-1.5">
+          <span class="flex items-center gap-2">
+            <i data-lucide="home" class="w-4 h-4 text-hydro-500"></i>
+            Home Presentations
+          </span>
+          <i id="mobileHomeArrow" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300 rotate-180"></i>
+        </button>
+        
+        <div id="mobileHomeSubmenu" class="pl-6 pr-2 pt-1.5 space-y-1.5">
+          <a href="index.html" id="drawerHome1" onclick="closeMobileMenu()" class="drawer-nav-active ring-1 ring-hydro-400 dark:ring-hydro-500 flex items-center justify-between p-2 rounded-lg bg-hydro-50 dark:bg-hydro-950/40 text-hydro-700 dark:text-hydro-300 text-xs font-semibold">
+            <span>Home 1 - Residential</span>
+            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500 text-white font-bold">Turf</span>
+          </a>
+          <a href="home-2.html" id="drawerHome2" onclick="closeMobileMenu()" class="flex items-center justify-between p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs font-semibold">
+            <span>Home 2 - Commercial</span>
+            <span class="text-[9px] px-1.5 py-0.5 rounded bg-hydro-500 text-white font-bold">Agro</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Links in exact ordered sequence -->
+      <nav class="space-y-0.5">
+        <a href="about.html" id="drawerAbout" onclick="closeMobileMenu()" class="drawer-stagger-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-hydro-50 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="info" class="w-4 h-4 text-hydro-500"></i>
+          <span>About</span>
+        </a>
+
+        <a href="services.html" id="drawerServices" onclick="closeMobileMenu()" class="drawer-stagger-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-hydro-50 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="wrench" class="w-4 h-4 text-hydro-500"></i>
+          <span>Services</span>
+        </a>
+
+        <a href="guide.html" id="drawerGuide" onclick="closeMobileMenu()" class="drawer-stagger-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-hydro-50 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="tag" class="w-4 h-4 text-hydro-500"></i>
+          <span>Guide</span>
+        </a>
+
+        <a href="projects.html" id="drawerProjects" onclick="closeMobileMenu()" class="drawer-stagger-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-hydro-50 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="image" class="w-4 h-4 text-hydro-500"></i>
+          <span>Projects</span>
+        </a>
+
+        <a href="why-choose-us.html" id="drawerWhyChooseUs" onclick="closeMobileMenu()" class="drawer-stagger-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-hydro-50 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="shield-check" class="w-4 h-4 text-hydro-500"></i>
+          <span>Why Choose Us</span>
+        </a>
+
+        <a href="irrigation.html" id="drawerIrrigation" onclick="closeMobileMenu()" class="drawer-stagger-item flex items-center justify-between px-3 py-2 rounded-lg text-sm font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30 hover:bg-emerald-100 transition-colors">
+          <span class="flex items-center gap-2.5">
+            <i data-lucide="calculator" class="w-4 h-4 text-emerald-500"></i>
+            <span>Irrigation</span>
+          </span>
+          <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-500 text-white font-bold">SYSTEM</span>
+        </a>
+
+        <!-- 8. Contact -->
+        <a href="contact.html" id="drawerContact" onclick="closeMobileMenu()" class="drawer-stagger-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-hydro-50 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="mail" class="w-4 h-4 text-hydro-500"></i>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+      <!-- DRAWER CONTROLS: DARK MODE & RTL -->
+      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2.5">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Controls &amp; Direction</p>
+
+        <!-- Dark Mode Toggle Inside Drawer -->
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-slate-800 flex items-center justify-center text-amber-500">
+              <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block"></i>
+              <i data-lucide="sun" class="w-3.5 h-3.5 block dark:hidden text-amber-600"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-800 dark:text-slate-200">Dark Mode</p>
+              <p class="text-[9.5px] text-slate-500" id="mobileThemeText">Light Mode Active</p>
+            </div>
+          </div>
+          <button 
+            onclick="toggleDarkMode()" 
+            class="px-2.5 py-1 rounded-lg bg-hydro-600 text-white text-[11px] font-bold shadow-sm active:scale-95 transition-transform">
+            Switch
+          </button>
+        </div>
+
+        <!-- Right to Left (RTL) Toggle Inside Drawer -->
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-hydro-100 dark:bg-hydro-900/50 flex items-center justify-center text-hydro-600 dark:text-hydro-400">
+              <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-800 dark:text-slate-200">Layout Direction</p>
+              <p class="text-[9.5px] text-slate-500" id="mobileRtlText">Left to Right (LTR)</p>
+            </div>
+          </div>
+          <button 
+            onclick="toggleDirection()" 
+            class="px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 text-[11px] font-bold active:scale-95 transition-transform">
+            <span id="mobileRtlBtnLabel">Toggle RTL</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer: 3D BOOK NOW BUTTON -->
+    <div class="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/70">
+      <div class="btn-3d-scene w-full">
+        <a 
+          href="contact.html" 
+          onclick="closeMobileMenu();" 
+          class="btn-3d w-full py-3 text-center justify-center"
+          aria-label="Book Sprinkler and Irrigation Installation">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          <span>Book Now</span>
+        </a>
+      </div>
+
+      <div class="mt-2 text-center">
+        <p class="text-[10px] text-slate-400 font-medium">Emergency Line: <a href="tel:18005552782" class="text-hydro-600 dark:text-hydro-400 font-bold">(800) 555-AQUA</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN BODY: CLEAN WORKSPACE                                                -->
+  <!-- ========================================================================= -->
+  <main class="flex-1 w-full overflow-hidden bg-slate-50 dark:bg-[#040914] transition-colors duration-300">
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- SECTION 1: SMART IRRIGATION INTRODUCTION & WATER CONSERVATION BENEFITS   -->
+    <!-- ASYMMETRIC SPLIT-SCREEN HERO WITH FLOATING TELEMETRY SENSOR CONSOLE      -->
+    <!-- ----------------------------------------------------------------------- -->
+    <section id="smart-introduction" class="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-transparent via-hydro-50/40 dark:via-hydro-950/20 to-transparent border-b border-slate-200/60 dark:border-slate-800/80">
+      <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Left Column: High-Impact Typography & Real-Time Conservation Ticker -->
+          <div class="lg:col-span-7 space-y-6 motion-hero-left">
+            
+            <!-- Trust & Telemetry Badges -->
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-xs font-bold text-emerald-700 dark:text-emerald-300 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span>EPA WaterSense Certified Partner</span>
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-hydro-50 dark:bg-hydro-950/60 border border-hydro-200 dark:border-hydro-800 text-xs font-bold text-hydro-700 dark:text-hydro-300">
+                <i data-lucide="cloud-rain" class="w-3.5 h-3.5 text-hydro-500"></i>
+                <span>Live Weather-Sync Active</span>
+              </span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="font-display font-black text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-slate-900 dark:text-white leading-[1.12]">
+              Intelligent Precision 
+              <span class="bg-gradient-to-r from-hydro-600 via-teal-500 to-emerald-500 bg-clip-text text-transparent">Sprinkler &amp; Irrigation</span>
+              Solutions
+            </h1>
+
+            <!-- Comprehensive Introduction Copy -->
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+              Welcome to next-generation algorithmic water management. AquaFlow designs, engineers, and installs custom residential turf sprays, micro-drip perennial networks, and commercial high-flow manifolds that maintain deep-rooted emerald perfection while eliminating up to 50% of municipal water waste.
+            </p>
+
+            <!-- Water Conservation Benefits Counter Bar -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-[#070e1b]/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-lg shadow-hydro-500/5 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div class="text-center sm:text-left">
+                <p class="font-display font-extrabold text-2xl sm:text-3xl text-hydro-600 dark:text-hydro-400">50%</p>
+                <p class="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">Water Bill Reduction</p>
+              </div>
+              <div class="text-center sm:text-left border-y sm:border-y-0 sm:border-x border-slate-200 dark:border-slate-800 py-3 sm:py-0 px-2 sm:px-4">
+                <p class="font-display font-extrabold text-2xl sm:text-3xl text-emerald-600 dark:text-emerald-400">3.2M+</p>
+                <p class="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">Gallons Saved Yearly</p>
+              </div>
+              <div class="text-center sm:text-left">
+                <p class="font-display font-extrabold text-2xl sm:text-3xl text-teal-600 dark:text-teal-400">100%</p>
+                <p class="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">Root Saturation Uniformity</p>
+              </div>
+            </div>
+
+            <!-- CTAs -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <div class="btn-3d-scene">
+                <button onclick="handle3DButtonClick(this, event)" class="btn-3d py-3 px-6 text-sm whitespace-nowrap">
+                  <i data-lucide="calculator" class="w-4 h-4"></i>
+                  <span>Schedule Free Assessment</span>
+                </button>
+              </div>
+              
+              <a href="#smart-management" class="flex-shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-3 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs sm:text-sm border border-slate-200 dark:border-slate-700 transition-all">
+                <i data-lucide="gauge" class="w-4 h-4 text-hydro-500"></i>
+                <span>Explore Live Telemetry</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Hero Visual Card with Floating Telemetry Pills -->
+          <div class="lg:col-span-5 relative motion-hero-right">
+            
+            <!-- Outer Glow Backdrop -->
+            <div class="absolute -inset-2 bg-gradient-to-r from-hydro-500/20 via-teal-500/20 to-emerald-500/20 rounded-3xl blur-2xl opacity-70 pointer-events-none"></div>
+
+            <!-- Main Image Frame -->
+            <div class="relative rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-2xl bg-slate-900 group">
+              <img 
+                src="images/smart-irrigation-hero.jpg" 
+                alt="Smart precision rotary sprinkler spraying fine mist across emerald estate lawn" 
+                class="w-full h-[380px] sm:h-[460px] object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager" />
+
+              <!-- Subtle Gradient Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20 pointer-events-none"></div>
+
+              <!-- Top Telemetry Pill: Moisture Sensor Readout -->
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#070e1b]/90 backdrop-blur-md border border-white/20 text-xs font-bold text-slate-800 dark:text-slate-100 shadow-lg float-anim-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-hydro-500 animate-pulse"></span>
+                  <span>Zone 1 Rotary Active</span>
+                  <span class="text-[10px] text-hydro-600 dark:text-hydro-400 font-mono">40 PSI</span>
+                </div>
+
+                <div class="px-2.5 py-1 rounded-xl bg-emerald-500/90 text-white text-[11px] font-extrabold backdrop-blur-md shadow-lg float-anim-2">
+                  <span>98% Efficiency</span>
+                </div>
+              </div>
+
+              <!-- Bottom Glass Banner: Live Status -->
+              <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-white/90 dark:bg-[#070e1b]/90 backdrop-blur-md border border-slate-200/60 dark:border-slate-800/80 shadow-xl space-y-1.5">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-500"></i>
+                    <span>Smart Evapotranspiration Algorithm</span>
+                  </span>
+                  <span class="flex-shrink-0 whitespace-nowrap text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold">-38% Flow</span>
+                </div>
+                <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-hydro-500 to-emerald-500 rounded-full w-[88%] animate-pulse"></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- SECTION 2: LUSH GREEN LAWN SHOWCASE & BEAUTIFULLY LANDSCAPED GARDENS     -->
+    <!-- ASYMMETRICAL MAGAZINE-STYLE BENTO VISUAL GALLERY                        -->
+    <!-- ----------------------------------------------------------------------- -->
+    <section id="lawn-showcase" class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#070e1b]/40 border-b border-slate-200/60 dark:border-slate-800/80">
+      <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3 motion-section-header">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-500"></i>
+            <span>Botanical Harmony &amp; Turf Artistry</span>
+          </div>
+          <h2 class="font-display font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-slate-900 dark:text-white">
+            Lush Green Lawn Showcase &amp; Beautifully Landscaped Gardens
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            Where botanical artistry meets precision hydro-engineering. Experience deep-green turf density and vibrantly blooming garden beds nurtured with zero overspray and zero water waste.
+          </p>
+        </div>
+
+        <!-- Bento Grid Gallery -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <!-- Bento Feature 1: Large Showcase Image Card (8-Cols) -->
+          <div class="lg:col-span-8 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800/80 shadow-xl bg-slate-900 relative group min-h-[380px] sm:min-h-[460px] flex flex-col justify-end p-6 sm:p-8 motion-bento-1">
+            <img 
+              src="images/lush-lawn-garden.jpg" 
+              alt="Beautifully landscaped garden with vibrant perennial flowerbeds and micro-drip misting" 
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+
+            <!-- Content Overlay -->
+            <div class="relative z-10 space-y-3">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold text-xs">Perennial Flora Tier</span>
+                <span class="px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-md text-white font-semibold text-xs">Micro-Drip Low Volume</span>
+              </div>
+              <h3 class="font-display font-black text-xl sm:text-2xl text-white">
+                Estate Garden Micro-Drip &amp; Shrub Mist Zoning
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-200 max-w-xl leading-relaxed">
+                Direct-to-root subterranean emitters protect fragile blossom petals from fungal scorch while delivering timed nutrient-rich moisture directly beneath dark mulch beds.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bento Column 2: Two Complementary Deep-Dive Cards (4-Cols) -->
+          <div class="lg:col-span-4 flex flex-col justify-between gap-6">
+            
+            <!-- Bento Card 2: Golf-Grade Turf Uniformity -->
+            <div class="flex-1 p-6 sm:p-7 rounded-3xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 shadow-md space-y-4 motion-bento-2 hover:border-hydro-400 dark:hover:border-hydro-600 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-300 flex items-center justify-center">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">
+                  Golf-Grade Turf Uniformity
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  Every square foot receives identical precipitation depth (DU &gt; 0.88), preventing dry brown donut rings and wet sogginess.
+                </p>
+              </div>
+              <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                <span>Distribution Uniformity: 92%</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+            <!-- Bento Card 3: Boundary Cutoff & Hardscape Shield -->
+            <div class="flex-1 p-6 sm:p-7 rounded-3xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 shadow-md space-y-4 motion-bento-3 hover:border-hydro-400 dark:hover:border-hydro-600 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-hydro-100 dark:bg-hydro-900/50 text-hydro-600 dark:text-hydro-300 flex items-center justify-center">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">
+                  Hardscape &amp; Patio Protection
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  Precision edge-trim nozzles guarantee zero overspray onto paver walkways, wooden decks, or house siding, eliminating hard water mineral stains.
+                </p>
+              </div>
+              <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-hydro-600 dark:text-hydro-400">
+                <span>0% Concrete Runoff</span>
+                <i data-lucide="check" class="w-4 h-4"></i>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- SECTION 3: RESIDENTIAL VS COMMERCIAL IRRIGATION SOLUTIONS                -->
+    <!-- SIDE-BY-SIDE DUAL DECK ARCHITECTURE WITH OPPOSITE SLIDE-IN PHYSICS       -->
+    <!-- ----------------------------------------------------------------------- -->
+    <section id="solutions-dual" class="py-16 sm:py-20 lg:py-24 bg-slate-50/50 dark:bg-[#040914] border-b border-slate-200/60 dark:border-slate-800/80">
+      <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3 motion-section-header">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-hydro-50 dark:bg-hydro-950/60 border border-hydro-200 dark:border-hydro-800 text-xs font-bold text-hydro-700 dark:text-hydro-300">
+            <i data-lucide="git-fork" class="w-3.5 h-3.5 text-hydro-500"></i>
+            <span>Tailored Engineering Scales</span>
+          </div>
+          <h2 class="font-display font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-slate-900 dark:text-white">
+            Residential &amp; Commercial Irrigation Solutions
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            From single-family neighborhood lawn care to multi-acre corporate campuses, our irrigation master contractors build systems tailored to every square foot of terrain.
+          </p>
+        </div>
+
+        <!-- Dual Side-by-Side Deck -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          
+          <!-- Pillar A: Residential Precision Systems -->
+          <div class="rounded-3xl bg-white dark:bg-[#070e1b] border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-xl flex flex-col motion-pillar-left group">
+            <div class="relative h-60 sm:h-72 overflow-hidden bg-slate-900">
+              <img 
+                src="images/residential-sprinkler.jpg" 
+                alt="Modern suburban residential smart sprinkler popup system" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-hydro-500 text-white font-extrabold text-xs shadow-md">
+                Residential Tier
+              </span>
+            </div>
+
+            <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+              <div class="space-y-3">
+                <h3 class="font-display font-extrabold text-xl sm:text-2xl text-slate-900 dark:text-white">
+                  Residential Smart Lawn &amp; Patio Systems
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Engineered for busy homeowners seeking immaculate green curb appeal without dragging hoses. Integrated with smartphone controllers and whisper-quiet pop-up rotary nozzles that disappear into the lawn.
+                </p>
+
+                <!-- Feature Matrix -->
+                <ul class="space-y-2.5 pt-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Trenchless underground installation (zero turf destruction)</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Wi-Fi smartphone app schedules with automatic rain pauses</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Dedicated flowerbed micro-drip &amp; shrub bubbler zones</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Lead-free brass backflow preventer with 10-year warranty</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="openAssessmentModal()" class="w-full py-2.5 rounded-xl bg-hydro-50 hover:bg-hydro-100 dark:bg-hydro-950/50 dark:hover:bg-hydro-900/60 text-hydro-700 dark:text-hydro-300 font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                  <span>Calculate Residential Assessment</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 rtl-flip"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar B: Commercial & High-Flow Systems -->
+          <div class="rounded-3xl bg-white dark:bg-[#070e1b] border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-xl flex flex-col motion-pillar-right group">
+            <div class="relative h-60 sm:h-72 overflow-hidden bg-slate-900">
+              <img 
+                src="images/commercial-irrigation.jpg" 
+                alt="Expansive commercial campus large-scale precision irrigation sprinkler system" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-emerald-500 text-white font-extrabold text-xs shadow-md">
+                Commercial Tier
+              </span>
+            </div>
+
+            <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+              <div class="space-y-3">
+                <h3 class="font-display font-extrabold text-xl sm:text-2xl text-slate-900 dark:text-white">
+                  Commercial &amp; Agro Heavy-Flow Grids
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Heavy-duty infrastructure for corporate parks, sports complexes, and HOA master developments. Engineered to handle high dynamic pressures, multi-zone manifolds, and central cloud telemetry.
+                </p>
+
+                <!-- Feature Matrix -->
+                <ul class="space-y-2.5 pt-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Industrial 2-inch solenoid valves &amp; dual-filter manifolds</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Variable Frequency (VFD) pressure booster pumps</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Centralized cloud dashboard for facility management teams</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
+                    <span>Annual municipal backflow testing &amp; compliance certificates</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="openBookModal()" class="w-full py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/50 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                  <span>Request Commercial RFP Consultation</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 rtl-flip"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- SECTION 4: WATER-EFFICIENT SOLUTIONS & AUTOMATIC SPRINKLER HIGHLIGHTS    -->
+    <!-- RADIAL ENGINEERING DIAMOND MATRIX WITH MACRO NOZZLE VIEWPORT             -->
+    <!-- ----------------------------------------------------------------------- -->
+    <section id="automatic-highlights" class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#070e1b]/40 border-b border-slate-200/60 dark:border-slate-800/80">
+      <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3 motion-section-header">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 text-xs font-bold text-teal-700 dark:text-teal-300">
+            <i data-lucide="cpu" class="w-3.5 h-3.5 text-teal-500"></i>
+            <span>Nozzle Physics &amp; Efficiency</span>
+          </div>
+          <h2 class="font-display font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-slate-900 dark:text-white">
+            Water-Efficient Solutions &amp; Automatic Sprinkler Highlights
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            Every drop is calculated. Our precision-engineered nozzles create wind-resistant droplet sizes that reach soil roots instead of evaporating into thin air.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Central Macro Viewport (5-Cols) -->
+          <div class="lg:col-span-5 relative motion-radial-center">
+            <div class="relative mx-auto max-w-sm rounded-3xl overflow-hidden border-2 border-hydro-500/40 shadow-2xl bg-slate-950 p-2">
+              <div class="rounded-2xl overflow-hidden relative">
+                <img 
+                  src="images/automatic-sprinkler-nozzle.jpg" 
+                  alt="Macro close-up photo of precision brass and polymer rotary sprinkler nozzle head spraying clean water" 
+                  class="w-full h-80 sm:h-96 object-cover"
+                  loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-slate-950/90 backdrop-blur-md border border-slate-700 text-xs">
+                  <div class="flex items-center justify-between text-hydro-400 font-mono font-bold">
+                    <span>Model: AQUA-ROTARY-360</span>
+                    <span>PRN 35 PSI</span>
+                  </div>
+                  <p class="text-[11px] text-slate-300 mt-1">Brass core pivot with matched precipitation gear drive</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Surrounding 4 Highlights (7-Cols Grid) -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 motion-radial-cards">
+            
+            <!-- Highlight 1: Matched Precipitation Rotaries -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 space-y-2 hover:border-hydro-400 transition-colors">
+              <div class="w-8 h-8 rounded-lg bg-hydro-100 dark:bg-hydro-900/50 text-hydro-600 dark:text-hydro-300 flex items-center justify-center">
+                <i data-lucide="spray-can" class="w-4 h-4"></i>
+              </div>
+              <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                Matched Precipitation Rotaries (MPR)
+              </h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Replaces misting sprays with multi-trajectory rotating streams at 0.4 in/hr, matching soil percolation speed perfectly.
+              </p>
+            </div>
+
+            <!-- Highlight 2: Pressure-Regulated Stems -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 space-y-2 hover:border-emerald-400 transition-colors">
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-300 flex items-center justify-center">
+                <i data-lucide="gauge" class="w-4 h-4"></i>
+              </div>
+              <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                Pressure-Regulated Stems (PRS)
+              </h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Locks dynamic pressure at optimal 30-40 PSI, preventing pressure spikes that cause atomized water fogs and drift loss.
+              </p>
+            </div>
+
+            <!-- Highlight 3: Subsurface Root Emitters -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 space-y-2 hover:border-teal-400 transition-colors">
+              <div class="w-8 h-8 rounded-lg bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-300 flex items-center justify-center">
+                <i data-lucide="pipette" class="w-4 h-4"></i>
+              </div>
+              <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                Subsurface Porous Drip Tubing
+              </h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Embedded directly into the root layer for zero evaporation, zero wind interruption, and 100% direct nutrient absorption.
+              </p>
+            </div>
+
+            <!-- Highlight 4: Seal-A-Matic Low Head Check -->
+            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 space-y-2 hover:border-amber-400 transition-colors">
+              <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-300 flex items-center justify-center">
+                <i data-lucide="shield" class="w-4 h-4"></i>
+              </div>
+              <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                Seal-A-Matic (SAM) Check Valves
+              </h4>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Holds back up to 14 ft of elevation head pressure, eliminating post-cycle drainage onto sidewalks and erosion at hill bases.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- SECTION 5: SMART WATER MANAGEMENT & LIVE TELEMETRY HUB                   -->
+    <!-- INTERACTIVE GLASSMORPHIC IOT DASHBOARD WITH REAL-TIME ZONE SWITCHES     -->
+    <!-- ----------------------------------------------------------------------- -->
+    <section id="smart-management" class="py-16 sm:py-20 lg:py-24 bg-slate-50/50 dark:bg-[#040914] border-b border-slate-200/60 dark:border-slate-800/80">
+      <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3 motion-section-header">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800 text-xs font-bold text-cyan-700 dark:text-cyan-300">
+            <i data-lucide="activity" class="w-3.5 h-3.5 text-cyan-500"></i>
+            <span>Real-Time IoT Telemetry</span>
+          </div>
+          <h2 class="font-display font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-slate-900 dark:text-white">
+            Smart Water Management &amp; Telemetry Hub
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            Take total control of your property's micro-climate. Our cloud-connected controllers continuously ingest hyper-local weather station data to calculate daily evapotranspiration (ET).
+          </p>
+        </div>
+
+        <!-- Telemetry Station Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left: App Screen Visual & Live Telemetry (6-Cols) -->
+          <div class="lg:col-span-6 space-y-4 motion-telemetry-left">
+            <div class="rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-2xl relative bg-slate-900 group">
+              <img 
+                src="images/smart-water-management.jpg" 
+                alt="Smart water management smartphone application and digital controller interface" 
+                class="w-full h-80 sm:h-96 object-cover"
+                loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent"></div>
+
+              <!-- Live Sensor Badges -->
+              <div class="absolute bottom-4 left-4 right-4 grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                <div class="p-2.5 rounded-xl bg-white/90 dark:bg-[#070e1b]/90 backdrop-blur-md border border-white/20">
+                  <p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold">Soil Temp</p>
+                  <p class="font-display font-bold text-sm text-slate-900 dark:text-white">68.4°F</p>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/90 dark:bg-[#070e1b]/90 backdrop-blur-md border border-white/20">
+                  <p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold">Rain Forecast</p>
+                  <p class="font-display font-bold text-sm text-hydro-600 dark:text-hydro-400">0.00" (Clear)</p>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/90 dark:bg-[#070e1b]/90 backdrop-blur-md border border-white/20 col-span-2 sm:col-span-1">
+                  <p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold">ET Deficit</p>
+                  <p class="font-display font-bold text-sm text-emerald-600 dark:text-emerald-400">0.18 in/day</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Zone Switchboard Console (6-Cols) -->
+          <div class="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#070e1b] border border-slate-200/80 dark:border-slate-800 shadow-xl space-y-6 motion-telemetry-right">
+            
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+              <div>
+                <h3 class="font-display font-extrabold text-lg text-slate-900 dark:text-white">
+                  Interactive Zone Switchboard
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Toggle zones to test solenoid response and live flow GPM</p>
+              </div>
+              <div class="text-right">
+                <span class="text-[10px] uppercase font-bold text-slate-400">Live System Flow</span>
+                <p id="liveFlowRate" class="font-mono font-black text-lg text-hydro-600 dark:text-hydro-400">12.0 GPM</p>
+              </div>
+            </div>
+
+            <!-- 4 Interactive Zones -->
+            <div class="space-y-3">
+              
+              <!-- Zone 1 -->
+              <div onclick="toggleZone('zone1', 6.2)" id="zone1Card" class="p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between bg-hydro-50/60 dark:bg-hydro-950/30 border-hydro-300 dark:border-hydro-700">
+                <div class="flex items-center gap-3">
+                  <span id="zone1Dot" class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <div>
+                    <p class="text-xs font-bold text-slate-800 dark:text-slate-100">Zone 1: Front Lawn Rotaries</p>
+                    <p class="text-[10px] text-slate-500">6 heads • 360° Matched • 40 PSI</p>
+                  </div>
+                </div>
+                <span id="zone1Badge" class="text-[11px] font-bold px-2 py-0.5 rounded-lg bg-emerald-500 text-white">ACTIVE (6.2 GPM)</span>
+              </div>
+
+              <!-- Zone 2 -->
+              <div onclick="toggleZone('zone2', 5.8)" id="zone2Card" class="p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between bg-hydro-50/60 dark:bg-hydro-950/30 border-hydro-300 dark:border-hydro-700">
+                <div class="flex items-center gap-3">
+                  <span id="zone2Dot" class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <div>
+                    <p class="text-xs font-bold text-slate-800 dark:text-slate-100">Zone 2: Backyard Main Turf</p>
+                    <p class="text-[10px] text-slate-500">8 heads • Dual Spray Arc • 38 PSI</p>
+                  </div>
+                </div>
+                <span id="zone2Badge" class="text-[11px] font-bold px-2 py-0.5 rounded-lg bg-emerald-500 text-white">ACTIVE (5.8 GPM)</span>
+              </div>
+
+              <!-- Zone 3 -->
+              <div onclick="toggleZone('zone3', 2.4)" id="zone3Card" class="p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span id="zone3Dot" class="w-3 h-3 rounded-full bg-slate-400"></span>
+                  <div>
+                    <p class="text-xs font-bold text-slate-800 dark:text-slate-100">Zone 3: Perimeter Drip Bed</p>
+                    <p class="text-[10px] text-slate-500">120 ft Porous Line • Low Vol • 25 PSI</p>
+                  </div>
+                </div>
+                <span id="zone3Badge" class="text-[11px] font-bold px-2 py-0.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">STANDBY</span>
+              </div>
+
+              <!-- Zone 4 -->
+              <div onclick="toggleZone('zone4', 1.8)" id="zone4Card" class="p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span id="zone4Dot" class="w-3 h-3 rounded-full bg-slate-400"></span>
+                  <div>
+                    <p class="text-xs font-bold text-slate-800 dark:text-slate-100">Zone 4: Patio Planter Misters</p>
+                    <p class="text-[10px] text-slate-500">12 Micro Bubblers • 15 PSI</p>
+                  </div>
+                </div>
+                <span id="zone4Badge" class="text-[11px] font-bold px-2 py-0.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">STANDBY</span>
+              </div>
+
+            </div>
+
+            <!-- Total Savings Output -->
+            <div class="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 flex items-center justify-between text-xs">
+              <span class="text-emerald-800 dark:text-emerald-300 font-semibold">Today's Weather-Adjusted Savings:</span>
+              <span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-sm">342 Gallons Conserved</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- SECTION 6: BEFORE & AFTER LAWN TRANSFORMATIONS & WHY CHOOSE US           -->
+    <!-- INTERACTIVE BEFORE/AFTER DRAGGABLE SLIDER + 4 PILLARS OF EXCELLENCE     -->
+    <!-- ----------------------------------------------------------------------- -->
+    <section id="transformation-why" class="py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#070e1b]/40 border-b border-slate-200/60 dark:border-slate-800/80">
+      <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3 motion-section-header">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-500"></i>
+            <span>Proven Visual Evidence</span>
+          </div>
+          <h2 class="font-display font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-slate-900 dark:text-white">
+            Before &amp; After Lawn Transformations &amp; Why Choose Us
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            See the transformative difference engineered hydration makes. Drag the comparison handle below to view drought-stressed patchy turf revitalized into deep, barefoot-soft emerald lawn.
+          </p>
+        </div>
+
+        <!-- Interactive Comparison Slider -->
+        <div class="relative max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 dark:border-slate-700 select-none motion-slider-frame">
+          
+          <div id="beforeAfterContainer" class="relative w-full h-[360px] sm:h-[480px] overflow-hidden cursor-ew-resize">
+            
+            <!-- After Image (Base) -->
+            <img 
+              src="images/after-transformation.jpg" 
+              alt="Deep lush emerald green lawn after smart precision irrigation installation" 
+              class="absolute inset-0 w-full h-full object-cover" />
+            <span class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-emerald-600/90 text-white font-bold text-xs shadow-md">
+              AFTER: 4 Weeks Precision Hydro
+            </span>
+
+            <!-- Before Image (Overlay clipped by slider) -->
+            <div id="beforeImageWrapper" class="absolute inset-0 overflow-hidden" style="width: 50%;">
+              <img 
+                src="images/before-transformation.jpg" 
+                alt="Dry patchy brown drought stressed lawn before irrigation" 
+                class="absolute inset-0 w-full h-full object-cover max-w-none" style="width: 896px;" id="beforeImageElement" />
+              <span class="absolute top-4 left-4 z-10 px-3 py-1 rounded-full bg-amber-600/90 text-white font-bold text-xs shadow-md">
+                BEFORE: Drought &amp; Dry Patches
+              </span>
+            </div>
+
+            <!-- Divider Line & Draggable Handle -->
+            <div id="sliderHandle" class="absolute top-0 bottom-0 z-20 w-1 bg-white shadow-2xl cursor-ew-resize flex items-center justify-center pointer-events-none" style="left: 50%;">
+              <div class="w-10 h-10 rounded-full bg-white dark:bg-slate-900 text-hydro-600 dark:text-hydro-400 shadow-2xl border-2 border-hydro-500 flex items-center justify-center">
+                <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Slider Instructions -->
+          <div class="bg-slate-100 dark:bg-slate-900/90 p-3 text-center border-t border-slate-200 dark:border-slate-800">
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">
+              &larr; Drag handle horizontally across image to compare lawn condition &rarr;
+            </p>
+          </div>
+
+        </div>
+
+        <!-- 4 Pillars: Why Choose Our Irrigation Services -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4 motion-trust-pillars">
+          
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 space-y-3 hover:border-hydro-500 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-hydro-100 dark:bg-hydro-900/50 text-hydro-600 dark:text-hydro-300 flex items-center justify-center">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-display font-bold text-base text-slate-900 dark:text-white">Master Certified Installer</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              State-licensed contractor (#IRR-92041) adhering to EPA WaterSense guidelines and ASABE safety codes.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 space-y-3 hover:border-emerald-500 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-300 flex items-center justify-center">
+              <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-display font-bold text-base text-slate-900 dark:text-white">10-Year Pipe Warranty</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Commercial-grade poly lateral lines and brass solenoid bodies guaranteed against burst and fatigue.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 space-y-3 hover:border-teal-500 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-300 flex items-center justify-center">
+              <i data-lucide="sprout" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-display font-bold text-base text-slate-900 dark:text-white">Trenchless Boring Tech</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              We pull pipe beneath the turf using vibratory plows—no open trenches, no root damage, pristine yard intact.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 space-y-3 hover:border-amber-500 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-300 flex items-center justify-center">
+              <i data-lucide="phone-call" class="w-5 h-5"></i>
+            </div>
+            <h4 class="font-display font-bold text-base text-slate-900 dark:text-white">24/7 Rapid Leak Dispatch</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Emergency service hotline with direct dispatch trucks carrying replacement solenoids, heads, and controllers.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- SECTION 7: SEASONAL OFFERS & SCHEDULE YOUR IRRIGATION ASSESSMENT         -->
+    <!-- PROMOTIONAL PACKAGES + INTERACTIVE ON-SITE BOOKING CALCULATOR CARD       -->
+    <!-- ----------------------------------------------------------------------- -->
+    <section id="seasonal-assessment" class="py-16 sm:py-20 lg:py-24 bg-slate-50/50 dark:bg-[#040914] border-b border-slate-200/60 dark:border-slate-800/80">
+      <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3 motion-section-header">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-hydro-50 dark:bg-hydro-950/60 border border-hydro-200 dark:border-hydro-800 text-xs font-bold text-hydro-700 dark:text-hydro-300">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-hydro-500"></i>
+            <span>Seasonal Promotions &amp; On-Site Audit</span>
+          </div>
+          <h2 class="font-display font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-slate-900 dark:text-white">
+            Seasonal Irrigation Offers &amp; Schedule Your Assessment
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            Take advantage of seasonal tune-up packages or book a comprehensive on-site water efficiency audit with our master technicians.
+          </p>
+        </div>
+
+        <!-- 3 Seasonal Package Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 motion-seasonal-cards">
+          
+          <!-- Package 1: Spring -->
+          <div class="p-6 rounded-3xl bg-white dark:bg-[#070e1b] border border-slate-200/80 dark:border-slate-800 shadow-md space-y-4 hover:border-emerald-500 transition-colors relative">
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold uppercase">Spring Special</span>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display font-black text-3xl text-slate-900 dark:text-white">$89</span>
+              <span class="text-xs text-slate-500">/ Seasonal Tune</span>
+            </div>
+            <h4 class="font-display font-bold text-base text-slate-800 dark:text-slate-100">Spring Activation &amp; Nozzle Tune</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              Pressurize mainlines, adjust arc angles on all heads, inspect backflow assembly, and program Wi-Fi seasonal curves.
+            </p>
+            <button onclick="openBookModal()" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 transition-colors">
+              Claim Spring Special
+            </button>
+          </div>
+
+          <!-- Package 2: Summer (Featured) -->
+          <div class="p-6 rounded-3xl bg-gradient-to-br from-hydro-600 to-hydro-800 text-white shadow-xl space-y-4 relative transform lg:-translate-y-2">
+            <div class="flex items-center justify-between">
+              <span class="flex-shrink-0 whitespace-nowrap px-2.5 py-0.5 rounded-full bg-white/20 text-white text-[10px] font-bold uppercase">Most Popular</span>
+              <span class="text-xs font-bold text-emerald-300">Save $250</span>
+            </div>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display font-black text-3xl text-white">FREE</span>
+              <span class="text-xs text-hydro-200">With System Install</span>
+            </div>
+            <h4 class="font-display font-bold text-base text-white">Full Smart Irrigation Audit</h4>
+            <p class="text-xs text-hydro-100">
+              Comprehensive pressure profiling, catch-can catch-rate uniform test, soil core depth sample, and smart controller integration.
+            </p>
+            <button onclick="openAssessmentModal()" class="w-full py-2.5 rounded-xl bg-white text-hydro-800 hover:bg-hydro-50 text-xs font-extrabold shadow-lg transition-colors">
+              Book Free Audit Now
+            </button>
+          </div>
+
+          <!-- Package 3: Winterization -->
+          <div class="p-6 rounded-3xl bg-white dark:bg-[#070e1b] border border-slate-200/80 dark:border-slate-800 shadow-md space-y-4 hover:border-cyan-500 transition-colors relative">
+            <span class="px-2.5 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 text-[10px] font-bold uppercase">Autumn Freeze Guard</span>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display font-black text-3xl text-slate-900 dark:text-white">$95</span>
+              <span class="text-xs text-slate-500">/ Full Blowout</span>
+            </div>
+            <h4 class="font-display font-bold text-base text-slate-800 dark:text-slate-100">Winterization Compressor Blowout</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              High-CFM commercial air compressors evacuate 100% of water from underground lines, manifolds, and valves. Guaranteed no freeze breaks.
+            </p>
+            <button onclick="openBookModal()" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 transition-colors">
+              Reserve Winter Blowout
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Integrated On-Site Assessment Scheduler Card -->
+        <div class="p-6 sm:p-10 rounded-3xl bg-white dark:bg-[#070e1b] border border-slate-200/80 dark:border-slate-800 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center motion-assessment-box">
+          
+          <!-- Left Visual: Technician Photo -->
+          <div class="lg:col-span-5 relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700">
+            <img 
+              src="images/irrigation-technician.jpg" 
+              alt="Certified irrigation technician in uniform inspecting manifold valve box on lush lawn with digital tablet" 
+              class="w-full h-72 sm:h-80 object-cover"
+              loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/90 text-white text-xs">
+              <div class="flex items-center gap-1.5 text-emerald-400 font-bold">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                <span>Certified Irrigation Contractor</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-0.5">Licensed &amp; Insured Master Technician #IRR-92041</p>
+            </div>
+          </div>
+
+          <!-- Right Form: Interactive Parameter Selector -->
+          <div class="lg:col-span-7 space-y-5">
+            <div>
+              <h3 class="font-display font-black text-xl sm:text-2xl text-slate-900 dark:text-white">
+                Schedule Your On-Site Irrigation Assessment
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+                Select your property parameters to get instant water savings estimates and priority dispatch booking.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1.5">Property Scale</label>
+                <select id="assessScale" onchange="calculateAssessmentSavings()" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-hydro-500">
+                  <option value="1">Suburban Lawn (&lt; 4,000 sq ft)</option>
+                  <option value="2" selected>Medium Yard (4,000 - 9,000 sq ft)</option>
+                  <option value="3">Estate Grounds (9,000 - 20,000 sq ft)</option>
+                  <option value="4">Commercial / Multi-Acre Campus</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-1.5">Primary Focus</label>
+                <select id="assessNeed" onchange="calculateAssessmentSavings()" class="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-hydro-500">
+                  <option value="new">Brand New Smart System Installation</option>
+                  <option value="upgrade">Wi-Fi &amp; Nozzle Efficiency Upgrade</option>
+                  <option value="repair">Emergency Leak &amp; Solenoid Repair</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Calculated Preview Badge -->
+            <div class="p-3.5 rounded-2xl bg-hydro-50 dark:bg-hydro-950/40 border border-hydro-200 dark:border-hydro-800 flex items-center justify-between text-xs">
+              <div>
+                <span class="text-hydro-800 dark:text-hydro-300 font-bold block">Estimated Annual Utility Drop:</span>
+                <span id="assessSavingsText" class="text-hydro-600 dark:text-hydro-400 font-extrabold text-sm">$480 - $720 / Year Saved</span>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-500 text-white font-bold text-[11px]">Free On-Site</span>
+            </div>
+
+            <!-- Booking Action -->
+            <div class="btn-3d-scene w-full">
+              <button onclick="handle3DButtonClick(this, event); openBookModal();" class="btn-3d w-full py-3.5 text-center justify-center">
+                <i data-lucide="calendar-check" class="w-4 h-4"></i>
+                <span>Confirm Assessment &amp; Request Technician Dispatch</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Global Toast Container -->
+    <div id="actionToast" class="fixed bottom-6 right-6 text-xs font-semibold px-4 py-2.5 rounded-full bg-slate-900 text-white shadow-2xl border border-slate-700 transition-all opacity-0 pointer-events-none z-50"></div>
+
+    <!-- Interactive Scripts for Section Switchboards & Sliders -->
+    <script>
+      // 1. SECTION 5: INTERACTIVE ZONE SWITCHBOARD
+      const activeZones = { zone1: true, zone2: true, zone3: false, zone4: false };
+      const zoneFlows = { zone1: 6.2, zone2: 5.8, zone3: 2.4, zone4: 1.8 };
+
+      function toggleZone(zoneId, flowGpm) {
+        activeZones[zoneId] = !activeZones[zoneId];
+        const isNowActive = activeZones[zoneId];
+        
+        const card = document.getElementById(zoneId + 'Card');
+        const dot = document.getElementById(zoneId + 'Dot');
+        const badge = document.getElementById(zoneId + 'Badge');
+
+        if (isNowActive) {
+          card.className = "p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between bg-hydro-50/60 dark:bg-hydro-950/30 border-hydro-300 dark:border-hydro-700";
+          dot.className = "w-3 h-3 rounded-full bg-emerald-500 animate-pulse";
+          badge.className = "text-[11px] font-bold px-2 py-0.5 rounded-lg bg-emerald-500 text-white";
+          badge.textContent = `ACTIVE (${flowGpm} GPM)`;
+          showFeedback(`Turned ON ${zoneId.toUpperCase()} (Solenoid Opened)`);
+        } else {
+          card.className = "p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center justify-between bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800";
+          dot.className = "w-3 h-3 rounded-full bg-slate-400";
+          badge.className = "text-[11px] font-bold px-2 py-0.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300";
+          badge.textContent = "STANDBY";
+          showFeedback(`Turned OFF ${zoneId.toUpperCase()} (Solenoid Closed)`);
+        }
+
+        let total = 0;
+        for (const k in activeZones) {
+          if (activeZones[k]) total += zoneFlows[k];
+        }
+        document.getElementById('liveFlowRate').textContent = `${total.toFixed(1)} GPM`;
+      }
+
+      // 2. SECTION 6: BEFORE & AFTER SLIDER
+      const baContainer = document.getElementById('beforeAfterContainer');
+      const beforeWrapper = document.getElementById('beforeImageWrapper');
+      const beforeImg = document.getElementById('beforeImageElement');
+      const sliderHandle = document.getElementById('sliderHandle');
+      let isDragging = false;
+
+      function updateSlider(clientX) {
+        if (!baContainer) return;
+        const rect = baContainer.getBoundingClientRect();
+        let pos = (clientX - rect.left) / rect.width;
+        if (pos < 0.05) pos = 0.05;
+        if (pos > 0.95) pos = 0.95;
+        const pct = pos * 100;
+        beforeWrapper.style.width = `${pct}%`;
+        sliderHandle.style.left = `${pct}%`;
+        beforeImg.style.width = `${rect.width}px`;
+      }
+
+      if (baContainer) {
+        baContainer.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
+        window.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+        window.addEventListener('mouseup', () => { isDragging = false; });
+        
+        baContainer.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); });
+        window.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); });
+        window.addEventListener('touchend', () => { isDragging = false; });
+
+        window.addEventListener('resize', () => {
+          if (baContainer) {
+            beforeImg.style.width = `${baContainer.getBoundingClientRect().width}px`;
+          }
+        });
+        setTimeout(() => {
+          if (baContainer) beforeImg.style.width = `${baContainer.getBoundingClientRect().width}px`;
+        }, 150);
+      }
+
+      // 3. SECTION 7: ASSESSMENT SAVINGS CALCULATOR
+      function calculateAssessmentSavings() {
+        const scale = parseInt(document.getElementById('assessScale').value) || 2;
+        const ranges = {
+          1: "$320 - $480 / Year Saved (18,000 Gallons)",
+          2: "$480 - $720 / Year Saved (34,000 Gallons)",
+          3: "$850 - $1,400 / Year Saved (65,000 Gallons)",
+          4: "$2,200 - $4,800+ / Year Saved (210,000 Gallons)"
+        };
+        document.getElementById('assessSavingsText').textContent = ranges[scale] || ranges[2];
+      }
+
+      // 4. FRAMER MOTION SPRINGS & VIEWPORT SCROLL ANIMATIONS FOR ALL 7 SECTIONS
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.Motion && window.Motion.animate) {
+          
+          // Section 1: Hero Staggered Fade-Up & Floating Physics
+          window.Motion.animate(
+            '.motion-hero-left',
+            { opacity: [0, 1], y: [40, 0] },
+            { duration: 0.8, easing: "spring(1, 90, 12, 0)" }
+          );
+          window.Motion.animate(
+            '.motion-hero-right',
+            { opacity: [0, 1], scale: [0.94, 1] },
+            { duration: 0.85, delay: 0.15, easing: "spring(1, 80, 14, 0)" }
+          );
+
+          // Sine-wave floating pills
+          window.Motion.animate('.float-anim-1', { y: [0, -8, 0] }, { duration: 3.5, repeat: Infinity, easing: "ease-in-out" });
+          window.Motion.animate('.float-anim-2', { y: [0, 8, 0] }, { duration: 4.2, repeat: Infinity, easing: "ease-in-out" });
+
+          // IntersectionObserver for remaining sections
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const target = entry.target;
+
+                // Section 2: Bento Magazine Cascade
+                if (target.id === 'lawn-showcase') {
+                  window.Motion.animate('.motion-bento-1', { opacity: [0, 1], x: [-35, 0] }, { duration: 0.7, easing: "spring(1, 85, 12, 0)" });
+                  window.Motion.animate('.motion-bento-2', { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, delay: 0.15 });
+                  window.Motion.animate('.motion-bento-3', { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, delay: 0.3 });
+                }
+
+                // Section 3: Dual Deck Opposite Horizontal Slide-in
+                if (target.id === 'solutions-dual') {
+                  window.Motion.animate('.motion-pillar-left', { opacity: [0, 1], x: [-50, 0] }, { duration: 0.75, easing: "spring(1, 80, 12, 0)" });
+                  window.Motion.animate('.motion-pillar-right', { opacity: [0, 1], x: [50, 0] }, { duration: 0.75, easing: "spring(1, 80, 12, 0)" });
+                }
+
+                // Section 4: Radial Scale-Out Explosion
+                if (target.id === 'automatic-highlights') {
+                  window.Motion.animate('.motion-radial-center', { opacity: [0, 1], scale: [0.85, 1] }, { duration: 0.8, easing: "spring(1, 90, 10, 0)" });
+                  window.Motion.animate('.motion-radial-cards', { opacity: [0, 1], y: [40, 0] }, { duration: 0.7, delay: 0.2 });
+                }
+
+                // Section 5: Telemetry Station Reveal
+                if (target.id === 'smart-management') {
+                  window.Motion.animate('.motion-telemetry-left', { opacity: [0, 1], x: [-40, 0] }, { duration: 0.7 });
+                  window.Motion.animate('.motion-telemetry-right', { opacity: [0, 1], scale: [0.95, 1] }, { duration: 0.7, delay: 0.15 });
+                }
+
+                // Section 6: Before/After Slider & Trust Pillars
+                if (target.id === 'transformation-why') {
+                  window.Motion.animate('.motion-slider-frame', { opacity: [0, 1], y: [30, 0] }, { duration: 0.8 });
+                  window.Motion.animate('.motion-trust-pillars', { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.25 });
+                }
+
+                // Section 7: Seasonal Offers & Assessment Scheduler
+                if (target.id === 'seasonal-assessment') {
+                  window.Motion.animate('.motion-seasonal-cards', { opacity: [0, 1], y: [40, 0] }, { duration: 0.75 });
+                  window.Motion.animate('.motion-assessment-box', { opacity: [0, 1], scale: [0.96, 1] }, { duration: 0.7, delay: 0.2 });
+                }
+
+                observer.unobserve(target);
+              }
+            });
+          }, { threshold: 0.15 });
+
+          document.querySelectorAll('section[id]').forEach(sec => observer.observe(sec));
+        }
+      });
+    </script>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- ENTIRE COMPREHENSIVE FOOTER (BASED ON NAVBAR ARCHITECTURE & CONTENT)      -->
+  <!-- ========================================================================= -->
+  <footer class="w-full bg-white dark:bg-[#070e1b] border-t border-slate-200/80 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 text-xs transition-colors duration-300">
+    
+    <!-- Top Footer Section with 4 Balanced Columns -->
+    <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+
+        <!-- Column 1: Brand & Logo (Exact same emblem & identity) -->
+        <div class="space-y-4">
+          <a href="index.html" class="group inline-flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-hydro-500 rounded-lg p-0.5 transition-transform hover:scale-[1.02]">
+            <!-- Compact Vector Emblem (32px x 32px) -->
+            <div class="relative w-8 h-8 rounded-lg bg-gradient-to-br from-hydro-400 via-teal-400 to-emerald-500 p-0.5 shadow-sm shadow-hydro-500/20 group-hover:shadow-cyan-500/35 transition-all">
+              <div class="w-full h-full bg-slate-950 dark:bg-[#070e1b] rounded-[7px] flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-hydro-500/30 to-emerald-500/20 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                
+                <!-- Rotary Sprinkler + Hydro Droplet + Growth Sprout SVG -->
+                <svg viewBox="0 0 100 100" class="w-5.5 h-5.5 relative z-10 logo-sprinkler-head" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="42" stroke="url(#footerLogoArcGrad)" stroke-width="2.5" stroke-dasharray="3 4" class="opacity-40" />
+                  <path d="M50 14 C32 14 18 28 16 48" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3" />
+                  <path d="M50 14 C68 14 82 28 84 48" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 3" />
+                  <rect x="44" y="72" width="12" height="15" rx="3" fill="url(#footerLogoMetalBase)" />
+                  <path d="M40 85 L60 85" stroke="#0284c7" stroke-width="3" stroke-linecap="round" />
+                  <path d="M50 24 C50 24 33 43 33 55 C33 64.3888 40.6112 72 50 72 C59.3888 72 67 64.3888 67 55 C67 43 50 24 50 24Z" fill="url(#footerLogoDropGrad)" />
+                  <path d="M50 64 C50 64 57 58 57 50 C57 44 51 40 50 38 C49 40 43 44 43 50 C43 58 50 64 50 64Z" fill="url(#footerLogoSproutGrad)" />
+                  <path d="M50 40 L50 60" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.85" />
+                  <ellipse cx="43" cy="48" rx="3.5" ry="6" transform="rotate(-25 43 48)" fill="#ffffff" opacity="0.65" />
+                  
+                  <defs>
+                    <linearGradient id="footerLogoArcGrad" x1="0" y1="0" x2="100" y2="100">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="50%" stop-color="#22c55e" />
+                      <stop offset="100%" stop-color="#0284c7" />
+                    </linearGradient>
+                    <linearGradient id="footerLogoMetalBase" x1="44" y1="72" x2="56" y2="87">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="100%" stop-color="#0369a1" />
+                    </linearGradient>
+                    <linearGradient id="footerLogoDropGrad" x1="33" y1="24" x2="67" y2="72">
+                      <stop offset="0%" stop-color="#38bdf8" />
+                      <stop offset="45%" stop-color="#0284c7" />
+                      <stop offset="100%" stop-color="#075985" />
+                    </linearGradient>
+                    <linearGradient id="footerLogoSproutGrad" x1="43" y1="38" x2="57" y2="64">
+                      <stop offset="0%" stop-color="#4ade80" />
+                      <stop offset="100%" stop-color="#15803d" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Compact Brand Typography -->
+            <div class="flex flex-col">
+              <span class="font-display font-black text-base sm:text-lg tracking-tight bg-gradient-to-r from-hydro-600 via-teal-600 to-emerald-600 dark:from-hydro-400 dark:via-teal-300 dark:to-emerald-400 bg-clip-text text-transparent leading-none">
+                AQUA<span class="text-emerald-600 dark:text-emerald-400">FLOW</span>
+              </span>
+              <span class="font-sans font-bold text-[7.5px] sm:text-[8px] tracking-wider text-slate-500 dark:text-slate-400 uppercase mt-0.5">
+                IRRIGATION SYSTEMS
+              </span>
+            </div>
+          </a>
+
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Certified irrigation master contractors engineering intelligent water solutions. From smart residential lawn rotary sprays to multi-acre commercial drip grids, cutting utility bills by up to 50%.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-[10.5px] font-bold text-emerald-700 dark:text-emerald-300">
+              <i data-lucide="shield-check" class="w-3 h-3 text-emerald-500"></i>
+              10-Yr Valve Guarantee
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-hydro-50 dark:bg-hydro-950/60 border border-hydro-200 dark:border-hydro-800 text-[10.5px] font-bold text-hydro-700 dark:text-hydro-300">
+              <i data-lucide="award" class="w-3 h-3 text-hydro-500"></i>
+              EPA WaterSense
+            </span>
+          </div>
+        </div>
+
+        <!-- Column 2: Navigation Links (Matching navbar items) -->
+        <div class="space-y-3">
+          <h3 class="font-display font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+            Quick Navigation
+          </h3>
+          <ul class="space-y-2 text-xs">
+            <li>
+              <a href="#home1" onclick="showFeedback('Switched to Home 1'); return false;" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>Home 1: Residential Turf</span>
+              </a>
+            </li>
+            <li>
+              <a href="#home2" onclick="showFeedback('Switched to Home 2'); return false;" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>Home 2: Commercial &amp; Agro</span>
+              </a>
+            </li>
+            <li>
+              <a href="#about" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>About AquaFlow</span>
+              </a>
+            </li>
+            <li>
+              <a href="#services" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>Services Overview</span>
+              </a>
+            </li>
+            <li>
+              <a href="#guide" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>Pricing Guide &amp; Tiers</span>
+              </a>
+            </li>
+            <li>
+              <a href="#projects" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>Projects &amp; Gallery</span>
+              </a>
+            </li>
+            <li>
+              <a href="#why-choose-us" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>Why Choose Us</span>
+              </a>
+            </li>
+            <li>
+              <a href="#irrigation" onclick="openAssessmentModal(); return false;" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-bold text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="calculator" class="w-3.5 h-3.5 text-emerald-500"></i>
+                <span>Free Irrigation Audit</span>
+              </a>
+            </li>
+            <li>
+              <a href="#testimonials" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>Client Testimonials</span>
+              </a>
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-hydro-600 dark:hover:text-hydro-400 transition-colors flex items-center gap-1.5">
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-hydro-500 rtl-flip"></i>
+                <span>Contact &amp; Dispatch</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Specialized Services List -->
+        <div class="space-y-3">
+          <h3 class="font-display font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+            Irrigation Services
+          </h3>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-2">
+              <i data-lucide="spray-can" class="w-3.5 h-3.5 text-hydro-500"></i>
+              <span>Smart Rotary Sprinklers</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="pipette" class="w-3.5 h-3.5 text-emerald-500"></i>
+              <span>Micro-Drip Patio &amp; Flowerbed Zones</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="cpu" class="w-3.5 h-3.5 text-teal-500"></i>
+              <span>Smartphone Wi-Fi Controllers</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="gauge" class="w-3.5 h-3.5 text-hydro-500"></i>
+              <span>Backflow Testing &amp; Annual Certification</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="snowflake" class="w-3.5 h-3.5 text-cyan-500"></i>
+              <span>Winterization Compressor Blowout</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+              <span>Spring Activation &amp; Nozzle Tuning</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="wrench" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span>Emergency Pipe &amp; Solenoid Repair</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Immediate Dispatch & 3D Booking Action -->
+        <div class="space-y-4">
+          <h3 class="font-display font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+            24/7 Rapid Dispatch
+          </h3>
+          
+          <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 space-y-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-hydro-100 dark:bg-hydro-900/60 flex items-center justify-center text-hydro-600 dark:text-hydro-300">
+                <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Direct Phone Line</p>
+                <a href="tel:18005552782" class="font-display font-extrabold text-sm text-hydro-600 dark:text-hydro-400 hover:underline">
+                  (800) 555-AQUA
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 pt-1 border-t border-slate-200/60 dark:border-slate-800">
+              <div class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-900/60 flex items-center justify-center text-emerald-600 dark:text-emerald-300">
+                <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Hours of Operation</p>
+                <p class="text-xs font-semibold text-slate-700 dark:text-slate-300">Mon–Sat: 7am–7pm (24/7 Emergency)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D Book Now Button in Footer -->
+          <div class="btn-3d-scene w-full">
+            <a 
+              href="contact.html" 
+              class="btn-3d w-full py-2.5 justify-center"
+              aria-label="Book Sprinkler and Irrigation Installation">
+              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+              <span>Book Now</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Compliance Bar -->
+    <div class="border-t border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-[#050b15]/60 py-5">
+      <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500 dark:text-slate-400">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="font-bold text-slate-700 dark:text-slate-300">AQUAFLOW ENGINEERING</span>
+          <span>•</span>
+          <span>SPRINKLER &amp; IRRIGATION SYSTEM INSTALLER &copy; 2026</span>
+          <span class="hidden md:inline">• Licensed &amp; Insured #IRR-92041</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="#about" class="hover:underline">Privacy Policy</a>
+          <span>•</span>
+          <a href="#services" class="hover:underline">Terms of Service</a>
+          <span>•</span>
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-hydro-600 dark:hover:text-hydro-400 flex items-center gap-1 font-semibold">
+            <span>Back to Top</span>
+            <i data-lucide="arrow-up" class="w-3 h-3"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: 3D INTERACTIVE BOOKING SHEET                                       -->
+  <!-- ========================================================================= -->
+  <div id="bookModalBackdrop" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div id="bookModalContent" class="bg-white dark:bg-[#0b1528] rounded-3xl border border-hydro-200 dark:border-hydro-800 max-w-lg w-full p-6 sm:p-8 shadow-2xl relative transform transition-all scale-95 opacity-0 max-h-[90vh] overflow-y-auto">
+      
+      <button onclick="closeBookModal()" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Close booking modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-hydro-600 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-hydro-500/30">
+          <i data-lucide="calendar-check-2" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-black text-xl text-slate-900 dark:text-white">Book Irrigation Installation</h3>
+          <p class="text-xs text-slate-500">SPRINKLER &amp; IRRIGATION SYSTEM INSTALLER</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Service Type</label>
+          <select id="bookServiceType" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-hydro-500 outline-none">
+            <option>New Smart Sprinkler Installation</option>
+            <option>Commercial Irrigation Architecture</option>
+            <option>Drip Micro-System &amp; Patio Zones</option>
+            <option>Sprinkler Repair &amp; Valve Diagnostics</option>
+            <option>Seasonal Winterization Blowout</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+            <input type="text" required placeholder="Alex Turner" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-hydro-500 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Phone Number</label>
+            <input type="tel" required placeholder="(555) 000-0000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-hydro-500 outline-none" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Preferred Date</label>
+          <input type="date" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-hydro-500 outline-none" />
+        </div>
+
+        <!-- 3D Submit Button -->
+        <div class="btn-3d-scene w-full pt-2">
+          <button type="submit" class="btn-3d w-full py-3.5 justify-center">
+            <i data-lucide="check-circle" class="w-4 h-4"></i>
+            <span>Confirm Installation Booking</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: IRRIGATION ASSESSMENT CALCULATOR                                  -->
+  <!-- ========================================================================= -->
+  <div id="assessmentModalBackdrop" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div id="assessmentModalContent" class="bg-white dark:bg-[#0b1528] rounded-3xl border border-emerald-200 dark:border-emerald-800 max-w-lg w-full p-6 sm:p-8 shadow-2xl relative transform transition-all scale-95 opacity-0 max-h-[90vh] overflow-y-auto">
+      
+      <button onclick="closeAssessmentModal()" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Close calculator">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-hydro-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30">
+          <i data-lucide="calculator" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-black text-xl text-slate-900 dark:text-white">Smart Water Assessment</h3>
+          <p class="text-xs text-emerald-600 dark:text-emerald-400 font-bold">Instant Eco &amp; Utility Savings</p>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Landscape / Yard Footprint</label>
+          <select id="calcLawnSize" onchange="recalculateSavings()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+            <option value="2500">Under 2,500 sq ft (Townhouse / Urban)</option>
+            <option value="6000" selected>2,500 – 6,000 sq ft (Suburban Standard)</option>
+            <option value="15000">6,000 – 15,000 sq ft (Estate Lawn)</option>
+            <option value="45000">1+ Acre (Commercial Campus)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Current Summer Water Bill ($ / month)</label>
+          <input id="calcBill" type="number" value="180" oninput="recalculateSavings()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-emerald-500 outline-none" />
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-emerald-800 dark:text-emerald-300">
+            <span>Estimated Annual Water Saved:</span>
+            <span id="savedGallons" class="text-sm font-black text-emerald-600 dark:text-emerald-400">38,400 Gallons</span>
+          </div>
+          <div class="flex items-center justify-between text-xs font-bold text-emerald-800 dark:text-emerald-300">
+            <span>Annual Utility Savings:</span>
+            <span id="savedDollars" class="text-base font-black text-emerald-600 dark:text-emerald-400 font-display">$685 / year</span>
+          </div>
+        </div>
+
+        <div class="btn-3d-scene w-full pt-2">
+          <button onclick="closeAssessmentModal(); handle3DButtonClick(this, event);" class="btn-3d btn-3d-emerald w-full py-3.5 justify-center">
+            <i data-lucide="check" class="w-4 h-4"></i>
+            <span>Lock In Free On-Site Inspection</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT & FRAMER MOTION SPRINGS ENGINE                                 -->
+  <!-- ========================================================================= -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // -------------------------------------------------------------
+    // 1. DARK MODE TOGGLE LOGIC
+    // -------------------------------------------------------------
+    function initTheme() {
+      const savedTheme = localStorage.getItem('aquaflow_theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        updateThemeUI(true);
+      } else {
+        document.documentElement.classList.remove('dark');
+        updateThemeUI(false);
+      }
+    }
+
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('aquaflow_theme', isDark ? 'dark' : 'light');
+      updateThemeUI(isDark);
+      lucide.createIcons();
+    }
+
+    function updateThemeUI(isDark) {
+      const mobileText = document.getElementById('mobileThemeText');
+      if (mobileText) {
+        mobileText.textContent = isDark ? 'Dark Mode Active' : 'Light Mode Active';
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 2. RIGHT TO LEFT (RTL) TOGGLE (ICON ONLY)
+    // -------------------------------------------------------------
+    function toggleDirection() {
+      const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
+      const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+      document.documentElement.setAttribute('dir', newDir);
+      
+      const mobileRtl = document.getElementById('mobileRtlText');
+      const mobileBtnLabel = document.getElementById('mobileRtlBtnLabel');
+
+      if (newDir === 'rtl') {
+        if (mobileRtl) mobileRtl.textContent = 'Right to Left (RTL)';
+        if (mobileBtnLabel) mobileBtnLabel.textContent = 'Set to LTR';
+        showFeedback('Switched to RTL (Right to Left)');
+      } else {
+        if (mobileRtl) mobileRtl.textContent = 'Left to Right (LTR)';
+        if (mobileBtnLabel) mobileBtnLabel.textContent = 'Set to RTL';
+        showFeedback('Switched to LTR (Left to Right)');
+      }
+      lucide.createIcons();
+    }
+
+    // -------------------------------------------------------------
+    // 3. HOME DROPDOWN HOVER LOGIC (SHOWS HOME 1 & HOME 2 ON HOVER)
+    // -------------------------------------------------------------
+    const homeDropdown = document.getElementById('desktopHomeDropdown');
+    if (homeDropdown) {
+      homeDropdown.addEventListener('mouseenter', () => {
+        homeDropdown.classList.add('is-open');
+      });
+      homeDropdown.addEventListener('mouseleave', () => {
+        homeDropdown.classList.remove('is-open');
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 4. 3D BUTTON: FRAMER MOTION SPRINGS & 3D PARALLAX TILT
+    // -------------------------------------------------------------
+    function handle3DButtonClick(button, event) {
+      button.classList.add('btn-pressed');
+      setTimeout(() => {
+        button.classList.remove('btn-pressed');
+      }, 150);
+
+      // Trigger Framer Motion spring physics on the button if Motion library is available
+      if (window.Motion && window.Motion.animate) {
+        window.Motion.animate(
+          button,
+          { scale: [1, 0.94, 1.03, 1] },
+          { duration: 0.45, easing: "spring(1, 100, 10, 0)" }
+        );
+      }
+
+      // Burst water droplet particles
+      spawnWaterParticles(button, event);
+
+      // Open booking modal
+      setTimeout(() => {
+        openBookModal();
+      }, 200);
+    }
+
+    // Interactive 3D Cursor Tilt Parallax for the 3D button
+    const desktopBookBtn = document.getElementById('desktopBookBtn');
+    if (desktopBookBtn) {
+      desktopBookBtn.addEventListener('mousemove', (e) => {
+        const rect = desktopBookBtn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        const tiltX = (y / (rect.height / 2)) * -9;
+        const tiltY = (x / (rect.width / 2)) * 9;
+        
+        desktopBookBtn.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-2px)`;
+      });
+
+      desktopBookBtn.addEventListener('mouseleave', () => {
+        if (window.Motion && window.Motion.animate) {
+          window.Motion.animate(
+            desktopBookBtn,
+            { transform: "perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)" },
+            { duration: 0.35, easing: "spring(1, 80, 10, 0)" }
+          );
+        } else {
+          desktopBookBtn.style.transform = 'translateY(0px)';
+        }
+      });
+    }
+
+    function spawnWaterParticles(button, event) {
+      const rect = button.getBoundingClientRect();
+      const originX = event && event.clientX ? event.clientX : rect.left + rect.width / 2;
+      const originY = event && event.clientY ? event.clientY : rect.top + rect.height / 2;
+
+      for (let i = 0; i < 12; i++) {
+        const particle = document.createElement('span');
+        particle.classList.add('water-particle');
+        
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 35 + Math.random() * 55;
+        const dx = `${Math.cos(angle) * distance}px`;
+        const dy = `${Math.sin(angle) * distance}px`;
+        
+        particle.style.setProperty('--dx', dx);
+        particle.style.setProperty('--dy', dy);
+        particle.style.left = `${originX}px`;
+        particle.style.top = `${originY}px`;
+        
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 680);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 5. HAMBURGER MENU MORPH & SPRING DRAWER
+    // -------------------------------------------------------------
+    let isMobileMenuOpen = false;
+
+    function toggleMobileMenu() {
+      if (isMobileMenuOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    }
+
+    function openMobileMenu() {
+      isMobileMenuOpen = true;
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileDrawerBackdrop');
+      const hamBtn = document.getElementById('hamburgerBtn');
+
+      drawer.classList.remove('drawer-closed');
+      backdrop.classList.remove('invisible', 'opacity-0');
+      backdrop.classList.add('opacity-100');
+      
+      hamBtn.classList.add('active');
+      hamBtn.setAttribute('aria-expanded', 'true');
+
+      document.body.style.overflow = 'hidden';
+
+      const staggerItems = document.querySelectorAll('.drawer-stagger-item');
+      if (window.Motion && window.Motion.animate) {
+        window.Motion.animate(
+          staggerItems,
+          { opacity: [0, 1], transform: ["translateX(16px)", "translateX(0px)"] },
+          { delay: window.Motion.stagger(0.04), duration: 0.35, easing: "spring(1, 90, 12, 0)" }
+        );
+      }
+    }
+
+    function closeMobileMenu() {
+      isMobileMenuOpen = false;
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileDrawerBackdrop');
+      const hamBtn = document.getElementById('hamburgerBtn');
+
+      drawer.classList.add('drawer-closed');
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+      setTimeout(() => backdrop.classList.add('invisible'), 300);
+      
+      hamBtn.classList.remove('active');
+      hamBtn.setAttribute('aria-expanded', 'false');
+
+      document.body.style.overflow = '';
+    }
+
+    function toggleMobileHomeSubmenu() {
+      const submenu = document.getElementById('mobileHomeSubmenu');
+      const arrow = document.getElementById('mobileHomeArrow');
+      if (submenu.classList.contains('hidden')) {
+        submenu.classList.remove('hidden');
+        arrow.classList.add('rotate-180');
+      } else {
+        submenu.classList.add('hidden');
+        arrow.classList.remove('rotate-180');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 6. BOOKING MODAL LOGIC (WITH SPRING ENTRANCE)
+    // -------------------------------------------------------------
+    function openBookModal() {
+      const backdrop = document.getElementById('bookModalBackdrop');
+      const content = document.getElementById('bookModalContent');
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+      
+      if (window.Motion && window.Motion.animate) {
+        content.classList.remove('opacity-0');
+        window.Motion.animate(
+          content,
+          { scale: [0.92, 1], opacity: [0, 1] },
+          { duration: 0.35, easing: "spring(1, 90, 12, 0)" }
+        );
+      } else {
+        setTimeout(() => {
+          content.classList.remove('scale-95', 'opacity-0');
+          content.classList.add('scale-100', 'opacity-100');
+        }, 20);
+      }
+    }
+
+    function closeBookModal() {
+      const backdrop = document.getElementById('bookModalBackdrop');
+      const content = document.getElementById('bookModalContent');
+      content.classList.remove('scale-100', 'opacity-100');
+      content.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        backdrop.classList.remove('flex');
+        backdrop.classList.add('hidden');
+      }, 220);
+    }
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      alert("Sprinkler & Irrigation Installation Appointment Requested! A licensed technician will contact you to confirm within 2 business hours.");
+      closeBookModal();
+    }
+
+    // -------------------------------------------------------------
+    // 7. IRRIGATION ASSESSMENT CALCULATOR
+    // -------------------------------------------------------------
+    function openAssessmentModal() {
+      const backdrop = document.getElementById('assessmentModalBackdrop');
+      const content = document.getElementById('assessmentModalContent');
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+      recalculateSavings();
+
+      if (window.Motion && window.Motion.animate) {
+        content.classList.remove('opacity-0');
+        window.Motion.animate(
+          content,
+          { scale: [0.92, 1], opacity: [0, 1] },
+          { duration: 0.35, easing: "spring(1, 90, 12, 0)" }
+        );
+      } else {
+        setTimeout(() => {
+          content.classList.remove('scale-95', 'opacity-0');
+          content.classList.add('scale-100', 'opacity-100');
+        }, 20);
+      }
+    }
+
+    function closeAssessmentModal() {
+      const backdrop = document.getElementById('assessmentModalBackdrop');
+      const content = document.getElementById('assessmentModalContent');
+      content.classList.remove('scale-100', 'opacity-100');
+      content.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        backdrop.classList.remove('flex');
+        backdrop.classList.add('hidden');
+      }, 220);
+    }
+
+    function recalculateSavings() {
+      const sqft = parseFloat(document.getElementById('calcLawnSize').value) || 5000;
+      const bill = parseFloat(document.getElementById('calcBill').value) || 150;
+      
+      const gallonsSaved = Math.round(sqft * 6.4);
+      const dollarsSaved = Math.round(bill * 12 * 0.42);
+
+      document.getElementById('savedGallons').textContent = `${gallonsSaved.toLocaleString()} Gallons`;
+      document.getElementById('savedDollars').textContent = `$${dollarsSaved.toLocaleString()} / year`;
+    }
+
+    
+    function initActiveNav() {
+      let page = window.location.pathname.split('/').pop().toLowerCase();
+      if (!page || page === '' || page === '/') {
+        page = 'index.html';
+      }
+
+      const navMap = {
+        'index.html': { desktop: ['homeMenuBtn', 'dropdownHome1'], drawer: ['drawerHome1'] },
+        'home-2.html': { desktop: ['homeMenuBtn', 'dropdownHome2'], drawer: ['drawerHome2'] },
+        'about.html': { desktop: ['navAbout'], drawer: ['drawerAbout'] },
+        'services.html': { desktop: ['navServices'], drawer: ['drawerServices'] },
+        'guide.html': { desktop: ['navGuide'], drawer: ['drawerGuide'] },
+        'projects.html': { desktop: ['navProjects'], drawer: ['drawerProjects'] },
+        'project.html': { desktop: ['navProjects'], drawer: ['drawerProjects'] },
+        'why-choose-us.html': { desktop: ['navWhyChooseUs'], drawer: ['drawerWhyChooseUs'] },
+        'irrigation.html': { desktop: ['navIrrigation'], drawer: ['drawerIrrigation'] },
+        'contact.html': { desktop: ['navContact'], drawer: ['drawerContact'] }
+      };
+
+      document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('nav-active'));
+      document.querySelectorAll('.drawer-stagger-item, #mobileHomeSubmenu a').forEach(el => el.classList.remove('drawer-nav-active'));
+
+      const activeConfig = navMap[page] || navMap['index.html'];
+      if (activeConfig) {
+        if (activeConfig.desktop) {
+          activeConfig.desktop.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('nav-active');
+          });
+        }
+        if (activeConfig.drawer) {
+          activeConfig.drawer.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('drawer-nav-active');
+          });
+        }
+      }
+
+      if (page === 'index.html' || page === 'home-2.html') {
+        const sub = document.getElementById('mobileHomeSubmenu');
+        const arrow = document.getElementById('mobileHomeArrow');
+        if (sub && arrow) {
+          sub.classList.remove('hidden');
+          arrow.classList.add('rotate-180');
+        }
+      }
+    }
+
+    function showFeedback(msg) {
+      const toast = document.getElementById('actionToast');
+      if (toast) {
+        toast.textContent = msg;
+        toast.style.opacity = '1';
+        setTimeout(() => {
+          toast.style.opacity = '0';
+        }, 2500);
+      }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      initActiveNav();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+/**
+ * SPRINKLER & IRRIGATION SYSTEM INSTALLER
+ * UNIVERSAL RESPONSIVE STYLESHEET (MOBILE-FIRST)
+ * Supporting Breakpoints: 320px, 480px, 768px, 1024px, 1280px+
+ */
+
+/* ==========================================================================
+   1. GLOBAL RESET & OVERFLOW DEFENSE (STICKY-SAFE)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box !important;
+}
+
+/* Using overflow-x: clip preserves position: sticky on header in all modern browsers */
+html {
+  overflow-x: clip !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  min-height: 100vh;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+main,
+section,
+footer,
+article,
+aside {
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+  overflow-x: clip;
+}
+
+/* ==========================================================================
+   2. UNIVERSAL STICKY NAVBAR GUARANTEE
+   ========================================================================== */
+header,
+header.nav-glassmorphism,
+.sticky-navbar,
+.nav-glassmorphism {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  margin-top: 0 !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark header,
+.dark header.nav-glassmorphism,
+.dark .nav-glassmorphism {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+}
+
+header.nav-scrolled {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  border-bottom-color: rgba(14, 165, 233, 0.25) !important;
+}
+
+.dark header.nav-scrolled {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6) !important;
+  border-bottom-color: rgba(56, 189, 248, 0.25) !important;
+}
+
+/* ==========================================================================
+   3. TEXT CONTAINMENT & RESPONSIVE TYPOGRAPHY
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6,
+p, span, a, li, dt, dd,
+blockquote, figcaption, label, button {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word;
+}
+
+/* Fluid responsive headings */
+h1, .text-4xl, .text-5xl, .text-6xl {
+  line-height: 1.15 !important;
+}
+
+h2, .text-3xl {
+  line-height: 1.25 !important;
+}
+
+/* ==========================================================================
+   4. IMAGES & EMBEDDED MEDIA RESPONSIVENESS
+   ========================================================================== */
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100% !important;
+  height: auto;
+  box-sizing: border-box !important;
+}
+
+/* Image cards maintain visual aspect ratio on small devices */
+.responsive-img-cover {
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+/* ==========================================================================
+   5. BUTTONS & INTERACTIVE ELEMENTS
+   ========================================================================== */
+.btn-3d-scene {
+  max-width: 100% !important;
+}
+
+.btn-3d {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Form inputs fit screen without triggering mobile iOS zoom */
+input,
+select,
+textarea {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+}
+
+/* ==========================================================================
+   6. MODALS & POPUPS RESPONSIVENESS
+   ========================================================================== */
+#bookModalContent,
+#assessmentModalContent,
+.modal-container {
+  width: 94% !important;
+  max-width: 32rem !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   7. RTL ALIGNMENT FIXES
+   ========================================================================== */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] #mobileDrawer {
+  left: auto !important;
+  right: 0 !important;
+}
+
+[dir="rtl"] .drawer-closed {
+  transform: translateX(100%) !important;
+}
+
+/* ==========================================================================
+   8. EQUAL SECTION SPACING (RHYTHM)
+   ========================================================================== */
+.section-rhythm {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+
+@media (min-width: 640px) {
+  .section-rhythm {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-rhythm {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* ==========================================================================
+   9. MEDIA QUERIES FOR KEY BREAKPOINTS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   A. ULTRA-MOBILE / COMPACT BREAKPOINT: <= 320px
+   (e.g., iPhone SE 1st gen, small Android phones)
+   -------------------------------------------------------------------------- */
+@media (max-width: 320px) {
+  /* Containers */
+  .max-w-\[1536px\],
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .container {
+    padding-left: 0.625rem !important;
+    padding-right: 0.625rem !important;
+  }
+
+  /* Typography scale-down */
+  h1, .text-4xl, .text-5xl, .text-6xl {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2, .text-3xl {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  h3, .text-2xl {
+    font-size: 1.1rem !important;
+  }
+
+  p, .text-base, .text-lg {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Compact button layout */
+  .btn-3d {
+    font-size: 0.72rem !important;
+    padding: 0.45rem 0.75rem !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  .btn-3d-scene {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* Force stack on all flex hero CTA buttons */
+  .hero-cta-container,
+  .flex.flex-col.sm\:flex-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Drawer width */
+  #mobileDrawer {
+    width: 92% !important;
+    max-width: 295px !important;
+  }
+
+  /* Card image height */
+  img[class*="h-\["],
+  div[class*="h-\["] {
+    height: 220px !important;
+    max-height: 220px !important;
+  }
+
+  /* Telemetry floating overlays */
+  .absolute.bottom-4,
+  .absolute.bottom-6 {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin-top: 0.5rem !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Grids collapse to single column */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Modals */
+  #bookModalContent,
+  #assessmentModalContent {
+    padding: 1rem !important;
+    border-radius: 1rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B. STANDARD MOBILE BREAKPOINT: 321px to 480px
+   -------------------------------------------------------------------------- */
+@media (min-width: 321px) and (max-width: 480px) {
+  /* Container padding */
+  .max-w-\[1536px\],
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .container {
+    padding-left: 0.875rem !important;
+    padding-right: 0.875rem !important;
+  }
+
+  /* Typography */
+  h1, .text-5xl, .text-6xl {
+    font-size: 1.85rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2, .text-3xl, .text-4xl {
+    font-size: 1.45rem !important;
+    line-height: 1.25 !important;
+  }
+
+  h3, .text-2xl {
+    font-size: 1.2rem !important;
+  }
+
+  /* 3D Buttons full width */
+  .hero-cta-container .btn-3d-scene,
+  .hero-btn-wrap .btn-3d-scene {
+    width: 100% !important;
+  }
+
+  .hero-cta-container .btn-3d,
+  .hero-btn-wrap .btn-3d {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Force stack on 3-col and 4-col grids that lack 1-col mobile fallback */
+  .grid-cols-3:not(.keep-grid),
+  .grid-cols-4:not(.keep-grid) {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Drawer width */
+  #mobileDrawer {
+    width: 88% !important;
+    max-width: 320px !important;
+  }
+
+  /* Card image responsive height */
+  img[class*="h-\["],
+  div[class*="h-\["] {
+    max-height: 280px !important;
+  }
+
+  /* Modals */
+  #bookModalContent,
+  #assessmentModalContent {
+    padding: 1.25rem !important;
+    border-radius: 1.25rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   C. TABLET / LARGE MOBILE BREAKPOINT: 481px to 768px
+   -------------------------------------------------------------------------- */
+@media (min-width: 481px) and (max-width: 768px) {
+  .max-w-\[1536px\],
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* 4-col grids become 2-col */
+  .grid-cols-4:not(.keep-grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* 3-col grids become 2-col or 1-col */
+  .grid-cols-3:not(.keep-grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  #mobileDrawer {
+    width: 360px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   D. LAPTOP / DESKTOP BREAKPOINT: 769px to 1024px
+   -------------------------------------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .max-w-\[1536px\],
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* Balanced grids on small laptops */
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ==========================================================================
+   10. ACCESSIBILITY & REDUCED MOTION SAFEGUARD
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
