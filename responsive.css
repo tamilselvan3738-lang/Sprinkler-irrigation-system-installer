@@ -128,11 +128,42 @@ svg {
    ========================================================================== */
 .btn-3d-scene {
   max-width: 100% !important;
+  width: 100%;
 }
 
 .btn-3d {
   max-width: 100% !important;
   box-sizing: border-box !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  text-align: center !important;
+  line-height: 1.35 !important;
+  padding: 0.65rem 1.25rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.btn-3d span {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  white-space: normal !important;
+  text-align: center;
+}
+
+.btn-3d i,
+.btn-3d svg {
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .btn-3d {
+    font-size: 0.76rem !important;
+    padding: 0.6rem 1rem !important;
+    letter-spacing: 0.02em !important;
+  }
 }
 
 /* Form inputs fit screen without triggering mobile iOS zoom */
